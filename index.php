@@ -6,7 +6,7 @@ define('DB_PASS', '');
 
 // 動作環境をローカルから移す時のためにURLを定数にする
 // define('SITE_URL', 'http://' . $_SERVER['HTTP_HOST']);
-define('SITE_URL', 'http://localhost/todo/work/public/');
+define('SITE_URL', 'http://localhost/todo/');
 
 
 //エラーになったら例外を投げるtry catch
@@ -82,7 +82,7 @@ $todos = getTodos($pdo);
 <head>
   <meta charset="utf-8">
   <title>PHP Todo App</title>
-  <link rel="stylesheet" href="../../css/style.css">
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
   <div id="app">
