@@ -1,0 +1,15 @@
+cd C:\xampp\mysql\bin
+
+C:\xampp\mysql\bin>mysql -u root -p
+
+//今回パスワードは設定できていないのでenterのみでMariaDBに接続が完了
+Enter password:
+
+//ターミナルのクリアで見やすくする
+ctrl + l
+
+//現在のデータベースの一覧を表示
+MariaDB [(none)]> show databases;
+
+//接続終了
+quit

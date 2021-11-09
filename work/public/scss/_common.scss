@@ -1,0 +1,143 @@
+@charset "utf-8";
+@import "_vars.scss";
+* {
+  margin: 0;
+  padding: 0;
+}
+.none {
+ display: none;
+}
+
+.block {
+ display: block;
+}
+
+.clearfix{
+  &:after{
+    content: "";
+    clear: both;
+    display: block;
+  }
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.tcenter {
+  text-align: center;
+}
+ 
+.tright {
+  text-align: right;
+}
+ 
+.tleft {
+  text-align: left;
+}
+ 
+.tindent {
+  padding-left: 1em;
+  text-indent: -1em;
+}
+
+$w: 100;
+@while $w <= 100 {
+  .w#{$w} {width: #{$w}px;}
+  $w: $w + 100;
+}
+
+$m: 10;
+@while $m <= 100 {
+  .m#{$m} {margin: #{$m}px;}
+  $m: $m + 10;
+}
+
+$tm: 10;
+@while $tm <= 100 {
+  .t-m#{$tm} {margin: #{$tm}px;}
+  $tm: $tm + 10;
+}
+
+$bm: 10;
+@while $bm <= 100 {
+  .b-m#{$bm} {margin-bottom: #{$bm}px;}
+  $bm: $bm + 10;
+}
+
+$lm: 10;
+@while $lm <= 100 {
+  .l-m#{$lm} {margin-left: #{$lm}px;}
+  $lm: $lm + 10;
+}
+
+$rm: 10;
+@while $rm <= 100 {
+  .r-m#{$rm} {margin-right: #{$rm}px;}
+  $rm: $rm + 10;
+}
+
+$hm: 10;
+@while $hm <= 100 {
+  .h-m#{$hm} {margin-top: #{$hm}px;margin-bottom: #{$hm}px;}
+  $hm: $hm + 10;
+}
+
+$wm: 10;
+@while $wm <= 100 {
+  .w-m#{$wm} {margin-left: #{$wm}px;margin-right: #{$wm}px;}
+  $wm: $wm + 10;
+}
+
+$p: 10;
+@while $p <= 100 {
+  .p#{$p} {padding: #{$p}px;}
+  $p: $p + 10;
+}
+
+$tp: 10;
+@while $tp <= 100 {
+  .t-p#{$tp} {padding-top: #{$tp}px;}
+  $tp: $tp + 10;
+}
+
+$bp: 10;
+@while $bp <= 100 {
+  .b-p#{$bp} {padding-bottom: #{$bp}px;}
+  $bp: $bp + 10;
+}
+
+$lp: 10;
+@while $lp <= 100 {
+  .l-p#{$lp} {padding-left: #{$lp}px;}
+  $lp: $lp + 10;
+}
+
+$rp: 10;
+@while $rp <= 100 {
+  .r-p#{$rp} {padding-right: #{$rp}px;}
+  $rp: $rp + 10;
+}
+
+$hp: 10;
+@while $hp <= 100 {
+  .h-p#{$hp} {padding-top: #{$rp}px;padding-bottom: #{$rp}px;}
+  $hp: $hp + 10;
+}
+
+$wp: 10;
+@while $wp <= 100 {
+  .w-p#{$wp} {padding-left: #{$wp}px;padding-right: #{$wp}px;}
+  $wp: $wp + 10;
+}
+
+
+@for $i from 8 through 15 {
+  .f-s#{$i} {font-size: #{$i}px;}
+}
+
+$i: 16;
+@while $i <= 30 {
+  .f-s#{$i} {font-size: #{$i}px;}
+  $i: $i + 1;
+}

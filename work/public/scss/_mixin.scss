@@ -1,0 +1,18 @@
+@charset "UTF-8";
+
+
+@mixin for-size($size) {
+  @if $size == desktop { 
+   @media all and  (max-width: 1414px) { @content; }
+  }
+  @else if $size == tablet-landscape-up { 
+   @media all and  (max-width: 769px) { @content; }
+  } 
+  @else if $size == phone-only {
+   @media all and  (max-width: 639px) { @content; }
+  } 
+  @else if $size == phone-s {
+   @media all and  (max-width: 375px) { @content; }
+  }
+ 
+ }

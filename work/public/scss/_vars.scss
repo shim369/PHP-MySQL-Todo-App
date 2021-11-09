@@ -1,0 +1,25 @@
+@charset "utf-8";
+
+
+
+//サイトのベースサイズ
+$base_width: 1024px;
+$sub_width: 876px;
+
+
+// font
+$base_font: "YakuHanJP",Lato,"Noto Sans JP","游ゴシック Medium","游ゴシック体","Yu Gothic Medium",YuGothic,"ヒラギノ角ゴ ProN","Hiragino Kaku Gothic ProN","メイリオ",Meiryo,"ＭＳ Ｐゴシック","MS PGothic",sans-serif;
+$serif_font: "YakuHanJP",游明朝,"Yu Mincho",YuMincho,"Hiragino Mincho ProN",HGS明朝E,メイリオ,Meiryo,serif;
+$sub_font: "YakuHanJP","Roboto",sans-serif;
+
+/*サイトのメインカラー*/
+$base_color: #082032;
+$sub_color1: #2C394B;
+$sub_color2: #334756;
+$txt_color: #2C394B;
+$txt_color2: #fff;
+$color-red: #FF4C29;
+$color-white:#fff;
+$color_gray: #e5e6ec;
+$color_gray2: #bbb;
+$sub_gray: #f9f9f8;
