@@ -55,15 +55,17 @@ function addTodo($pdo)
 {
   // データの取得し、前後に半角空白があればtrimで除去する
   $title = trim(filter_input(INPUT_POST, 'title'));
+  $urls = trim(filter_input(INPUT_POST, 'urls'));
   // タイトルが空文字であれば追加の必要がないので、処理をストップ
   if($title === '') {
     return;
   }
   // 空文字でなければデータを追加する。prepareメソッドでSQL文を指定する。
   // INSERTでレコードを挿入。
-  $stmt = $pdo->prepare("INSERT INTO todos (title) VALUES (:title)");
+  $stmt = $pdo->prepare("INSERT INTO todos (title,urls) VALUES (:title,:urls)");
   // 値を紐づけるために、型の指定ができるbindValueを使用し、titleのプレースホルダーに対して、titleの値を割り当て、文字列型を指定する。
   $stmt->bindValue('title', $title, PDO::PARAM_STR);
+  $stmt->bindValue('urls', $urls, PDO::PARAM_STR);
   // レコードの追加を実行
   $stmt->execute();
 }

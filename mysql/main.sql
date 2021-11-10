@@ -11,3 +11,5 @@ INSERT INTO todo.todos (title, is_done) VALUES ('bbb', true);
 INSERT INTO todo.todos (title, is_done) VALUES ('ccc', false);
 
 SELECT * FROM todos;
+
+ALTER TABLE todo.todos ADD urls TEXT AFTER title;

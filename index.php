@@ -57,14 +57,21 @@ $todos = getTodos($pdo);
     <div class="wrap">
     <main class="main">
       <section class="add-list">
+        <form action="?action=add" method="post">
         <h2 class="clearfix">
           Todoを追加しよう！
+          <input type="submit" value="追加">
         </h2>
-        <form action="?action=add" method="post">
           <input type="text" name="title" placeholder="Todo Title">
+          <input type="url" name="urls" placeholder="Todo URL">
           <!-- 上で作って仕込んだセッションのトークンの値をフォームに仕込む -->
           <input type="hidden" name="token" value="<?= h($_SESSION['token']); ?>">
         </form>
+      </section>
+      <section class="add-list">
+        <h2 class="clearfix">
+          Todo List
+        </h2>
 
         <ul>
           <?php foreach ($todos as $todo) {; ?>
@@ -74,7 +81,13 @@ $todos = getTodos($pdo);
               <input type="hidden" name="id" value="<?= h($todo->id); ?>">
               <input type="hidden" name="token" value="<?= h($_SESSION['token']); ?>">
             </form>
-            <span class="<?= $todo->is_done ? 'done' : ''; ?>"><?= h($todo->title); ?></span>
+            <span class="<?= $todo->is_done ? 'done' : ''; ?>">
+            <?php if ($todo->urls) {; ?>
+            <a href="<?= h($todo->urls); ?>" target="_blank"><?= h($todo->title); ?></a>
+            <?php } else {; ?>
+            <?= h($todo->title); ?>
+            <?php }; ?>
+            </span>
             
             <form action="?action=delete" method="post" class="delete-form">
             <span class="delete"><img src="img/batsu.png" alt=""></span>
