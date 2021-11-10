@@ -76,8 +76,8 @@ $todos = getTodos($pdo);
             </form>
             <span class="<?= $todo->is_done ? 'done' : ''; ?>"><?= h($todo->title); ?></span>
             
-            <form action="?action=delete" method="post">
-            <span class="delete">×</span>
+            <form action="?action=delete" method="post" class="delete-form">
+            <span class="delete"><img src="img/batsu.png" alt=""></span>
               <input type="hidden" name="id" value="<?= h($todo->id); ?>">
               <input type="hidden" name="token" value="<?= h($_SESSION['token']); ?>">
             </form>

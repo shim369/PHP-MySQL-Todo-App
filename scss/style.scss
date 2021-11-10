@@ -98,10 +98,6 @@ body{
         }
       }
     }
-    .done {
-      text-decoration: line-through;
-      color: #ccc;
-    }
   }
   ul {
     list-style: none;
@@ -118,6 +114,7 @@ body{
         background-color: $color_gray;
       }
       span {
+        padding-left: 5px;
         &.done {
           text-decoration: line-through;
           color: $color_gray2;
@@ -145,11 +142,19 @@ body{
         }
       }
     }
-    .delete {
-      color: #ccc;
-      cursor: pointer;
-      position: relative;
-      top: 5px;
+    .delete-form {
+      margin-left: auto;
+      .delete {
+        cursor: pointer;
+        position: relative;
+        top: -3px;
+        img {
+          width: 15px;
+          &:hover {
+            opacity: .5;
+          }
+        }
+      }
     }
   }
 }
