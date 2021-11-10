@@ -1,72 +1,37 @@
 <?php
-//PDOを使ってDBへアクセスするための定数定義
-define('DSN', 'mysql:host=localhost;dbname=todo;charset=utf8mb4');
-define('DB_USER', 'root');
-define('DB_PASS', '');
+// 相対パスでrequireすると、想定しない読み込みエラーが起きることがあるので、__DIR__で絶対パスを示すようにする
+require_once(__DIR__ . '/app/config.php');
+
+//CSRF。 トークンを作ってセッションに仕込む
+createToken();
 
 // 動作環境をローカルから移す時のためにURLを定数にする
 // define('SITE_URL', 'http://' . $_SERVER['HTTP_HOST']);
 define('SITE_URL', 'http://localhost/todo/');
 
+$pdo = getPdoInstance();
 
-//エラーになったら例外を投げるtry catch
-try {
-  //PDOのインスタンスを作成
-  $pdo =new PDO(
-    //data source name
-    DSN,
-    DB_USER,
-    DB_PASS,
-    [
-      //エラー時の例外を投げる
-      PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-      // オブジェクト形式で結果を取得するFETCH_OBJにする
-      PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_OBJ,
-      // 取得したデータの型をSQLで定義した型にあわせて取得する
-      PDO::ATTR_EMULATE_PREPARES => false,
-    ]
-  );
-   //エラー時の例外を$eで受けとる
-} catch (PDOException $e) {
-  //エラー時の例外を表示させる
-  echo $e->getMessage();
-  exit;
-}
-// HTMLに値を埋め込む。文字の中には HTML において特殊な意味を持つものがあり、 それらの本来の値を表示したければ HTML の表現形式に変換してやらなければなりません。 この関数は、これらの変換を行った結果の文字列を返します。
-// htmlspecialchars関数をh()で省略する書き方
-function h($str)
-{
-  return htmlspecialchars($str, ENT_QUOTES, 'UTF-8');
-}
-// データの追加処理の定義
-function addTodo($pdo)
-{
-  // データの取得し、前後に半角空白があればtrimで除去する
-  $title = trim(filter_input(INPUT_POST, 'title'));
-  // タイトルが空文字であれば追加の必要がないので、処理をストップ
-  if($title === '') {
-    return;
-  }
-  // 空文字でなければデータを追加する。prepareメソッドでSQL文を指定する。
-  // INSERTでレコードを挿入。
-  $stmt = $pdo->prepare("INSERT INTO todos (title) VALUES (:title)");
-  // 値を紐づけるために、型の指定ができるbindValueを使用し、titleのプレースホルダーに対して、titleの値を割り当て、文字列型を指定する。
-  $stmt->bindValue('title', $title, PDO::PARAM_STR);
-  // レコードの追加を実行
-  $stmt->execute();
-}
-//DBにアクセスしデータを取得する関数に定義
-function getTodos($pdo)
-{
-  // PDOからすべてのレコードを取得
-  $stmt = $pdo->query("SELECT * FROM todos ORDER BY id DESC");
-  // SQL文の結果が帰ってくる
-  $todos = $stmt->fetchAll();
-  return $todos;
-}
+
 // formが送信された時にデータを追加したいので、サーバー変数を調べてREQUEST_METHODがPOSTであれば、データを追加する
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-  addTodo($pdo);
+  // フォーム送信時に送られたトークンとセッションのトークンが一致するか調べる
+  validateToken();
+  // フォーム送信時に送られたクエリ文字列を取得する
+  $action = filter_input(INPUT_GET, 'action');
+  //actionの値によって処理を振り分ける
+  switch ($action) {
+    case 'add':
+      addTodo($pdo);
+      break;
+    case 'toggle':
+      toggleTodo($pdo);
+      break;
+    case 'delete':
+      deleteTodo($pdo);
+      break;
+    default:
+      exit;
+  }
 
 //二重投稿を防ぐために、リダイレクト処理を追加
   header('Location: ' . SITE_URL);
@@ -95,15 +60,27 @@ $todos = getTodos($pdo);
         <h2 class="clearfix">
           Todoを追加しよう！
         </h2>
-        <form action="" method="post">
+        <form action="?action=add" method="post">
           <input type="text" name="title" placeholder="Todo Title">
+          <!-- 上で作って仕込んだセッションのトークンの値をフォームに仕込む -->
+          <input type="hidden" name="token" value="<?= h($_SESSION['token']); ?>">
         </form>
 
         <ul>
           <?php foreach ($todos as $todo) {; ?>
           <li>
-            <input type="checkbox" <?= $todo->is_done ? 'checked' : ''; ?>>
+            <form action="?action=toggle" method="post">
+              <input type="checkbox" <?= $todo->is_done ? 'checked' : ''; ?>>
+              <input type="hidden" name="id" value="<?= h($todo->id); ?>">
+              <input type="hidden" name="token" value="<?= h($_SESSION['token']); ?>">
+            </form>
             <span class="<?= $todo->is_done ? 'done' : ''; ?>"><?= h($todo->title); ?></span>
+            
+            <form action="?action=delete" method="post">
+            <span class="delete">×</span>
+              <input type="hidden" name="id" value="<?= h($todo->id); ?>">
+              <input type="hidden" name="token" value="<?= h($_SESSION['token']); ?>">
+            </form>
           </li>
           <?php }; ?>
         </ul>
@@ -111,5 +88,6 @@ $todos = getTodos($pdo);
     </main>
   </div>
   </div>
+  <script src="js/main.js"></script>
 </body>
 </html>

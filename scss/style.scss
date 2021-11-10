@@ -103,30 +103,29 @@ body{
       color: #ccc;
     }
   }
-  ul{
+  ul {
     list-style: none;
     border-top: 1px solid $color_gray;
     overflow-y: auto;
     max-height: 600px;
-    li{
+    li {
+      display: flex;
       padding: 10px 20px;
       font-size: 16px;
       line-height: 1.5;
-      padding-left: 2em;
-      text-indent: -1.5em;
       border-bottom: 1px solid $color_gray;
       &:nth-child(odd){
         background-color: $color_gray;
       }
-      span{
-        &.done{
+      span {
+        &.done {
           text-decoration: line-through;
           color: $color_gray2;
           a {
             color: $color_gray2;
           }
         }
-        &.command{
+        &.command {
           cursor: pointer;
           position: relative;
           top: -5px;
@@ -145,6 +144,12 @@ body{
           }
         }
       }
+    }
+    .delete {
+      color: #ccc;
+      cursor: pointer;
+      position: relative;
+      top: 5px;
     }
   }
 }
