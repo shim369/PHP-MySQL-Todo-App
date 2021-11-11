@@ -154,5 +154,6 @@ $todos = getTodos($pdo);
   </div>
   </div>
   <script src="js/main.js"></script>
+  <script src="js/timerYoutube.js"></script>
 </body>
 </html>
