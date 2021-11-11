@@ -7,8 +7,8 @@
 
 body{
   font-family: $base_font;
-  background: $sub_color2;
-  color: $sub_color1;
+  background: $sub_color1;
+  color: $color_gray2;
 }
 /* header
 ----------------------------------*/
@@ -17,7 +17,7 @@ body{
   padding: 20px 0;
   display: flex;
   justify-content: space-between;
-  background-color: $sub_color1;
+  background-color: $base_color;
   color: #fff;
   box-shadow: 0px 3px 3px 3px rgba(44,57,75,.7);
   position: relative;
@@ -27,7 +27,7 @@ body{
   h1{
     width: 180px;
     font-size: 40px;
-    color: $txt_color2;
+    color: $color_gray;
     font-style: italic;
     margin-left: 20px;
     @include for-size(phone-only) {
@@ -65,7 +65,7 @@ body{
 ----------------------------------*/
 .add-list {
   margin: 0 auto 50px;
-  background: #fff;
+  background: $sub_color2;
   box-sizing: border-box;
   padding: 5px;
   box-shadow: 0px 3px 3px 3px rgba(44,57,75,.7);
@@ -74,9 +74,9 @@ body{
   }
   h2 {
     font-size: 22px;
-    color: #fff;
+    color: $color_gray;
     font-style: italic;
-    background-color: #2c394b;
+    background-color: $base_color;
     padding: 20px 15px 20px;
     input {
       float: right;
@@ -98,9 +98,9 @@ body{
         margin: 10px 0 0;
         padding: 9px 12px;
         box-sizing: border-box;
-        background: #f8f8fa;
+        background: $color_gray;
         color: $txt_color;
-        border: 1px solid #ccc;
+        // border: 1px solid #ccc;
         &::placeholder {
           color: $color_gray2;
         }
@@ -112,7 +112,7 @@ body{
   }
   ul {
     list-style: none;
-    border-top: 1px solid $color_gray;
+    // border-top: 1px solid $color_gray;
     overflow-y: auto;
     max-height: 600px;
     li {
@@ -120,9 +120,9 @@ body{
       padding: 10px 20px;
       font-size: 16px;
       line-height: 1.5;
-      border-bottom: 1px solid $color_gray;
+      // border-bottom: 1px solid $color_gray;
       &:nth-child(odd){
-        background-color: $color_gray;
+        background-color: $sub_color1;
       }
       span {
         padding-left: 5px;
@@ -146,7 +146,7 @@ body{
           }
         }
         a {
-          color: $sub_color1;
+          color: $color_gray2;
           &:hover {
             opacity: .8;
           }
