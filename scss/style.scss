@@ -83,6 +83,9 @@ body{
           text-decoration: none;
           font-weight: bold;
           box-sizing: border-box;
+          &:hover {
+            opacity: .8;
+          }
         }
       }
     }
@@ -265,6 +268,9 @@ body{
         width: auto;
         cursor: pointer;
         padding: 3px 20px 3px;
+        &:hover {
+          opacity: .8;
+        }
       }
     }
   }
@@ -379,9 +385,9 @@ body{
     button {
       padding: 8px 20px;
       cursor: pointer;
-      color: $sub_color2;
+      color: $color_gray2;
       border: none;
-      background: $color_gray2;
+      background: $color_gray3;
       &:hover {
         opacity: .8;
       }
