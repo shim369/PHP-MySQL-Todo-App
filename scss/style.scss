@@ -25,7 +25,8 @@ body{
     padding: 10px 0;
   }
   h1{
-    width: 180px;
+    position: relative;
+    top: 5px;
     font-size: 40px;
     color: $color_gray;
     font-style: italic;
@@ -427,9 +428,9 @@ body{
 
 
 #modal {
-  background: $color-white;
+  background-color: $sub_color2;
   width: 560px;
-  padding: 20px;
+  padding: 5px;
   border-radius: 4px;
   position: absolute;
   top: 20%;
