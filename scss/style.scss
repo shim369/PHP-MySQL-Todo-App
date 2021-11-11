@@ -300,6 +300,16 @@ body{
     // border-top: 1px solid $color_gray;
     overflow-y: auto;
     max-height: 600px;
+    &::-webkit-scrollbar {
+      width: 5px;
+    }
+    &::-webkit-scrollbar-track {
+      box-shadow:0 0 5px $color_gray3 inset ;
+    }
+    &::-webkit-scrollbar-thumb {
+      background: $color_gray3;
+      border-radius: 5px;
+    }
     li {
       display: flex;
       padding: 10px 20px;
