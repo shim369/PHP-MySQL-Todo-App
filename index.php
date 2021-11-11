@@ -129,6 +129,28 @@ $todos = getTodos($pdo);
         </ul>
       </section>
     </main>
+    
+    <aside class="aside">
+        <div class="timerbox">
+          <div id="timer">25:00</div>
+          <div class="controls">
+            <button id="start">Start</button>
+            <button id="stop">Stop</button>
+            <button id="reset">Reset</button>
+          </div>
+          <div id="open">
+            5分休憩動画を見る
+          </div>
+          <div id="mask" class="hidden">
+            <section id="modal" class="hidden">
+              <div id="youtube_box"></div>
+              <div id="close">
+                閉じる
+              </div>
+            </section>
+          </div>
+        </div>
+      </aside>
   </div>
   </div>
   <script src="js/main.js"></script>
