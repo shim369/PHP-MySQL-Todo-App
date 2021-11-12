@@ -1,6 +1,6 @@
 'use strict';
-//チェックボッスに変化があると（チェックを入れると）チェックボックスのformでidが送信され、テーブルのis_doneカラムにtrueが入る。
 {
+  //チェックボッスに変化があると（チェックを入れると）チェックボックスのformでidが送信され、テーブルのis_doneカラムにtrueが入る。
   const checkboxes = document.querySelectorAll('input[type="checkbox"]');
 
   checkboxes.forEach(checkbox => {
@@ -18,6 +18,15 @@
       span.parentNode.submit();
     });
   });
+
+  const purge = document.querySelector('.purge');
+  purge.addEventListener('click',()=>{
+    if (!confirm('Are you sure?')) {
+      return;
+    }
+    purge.closest('form').submit();
+  });
+
   //hamburgerMenu
   const openMenu = document.getElementById('open-menu');
   const overlay = document.querySelector('.overlay');

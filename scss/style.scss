@@ -218,9 +218,9 @@ body{
   }
 }
 
-/* wrap
+/* container
 ----------------------------------*/
-.wrap{
+.container {
   width: 95%;
   display: flex;
   margin: 50px auto 0;
@@ -254,24 +254,31 @@ body{
   @include for-size(phone-only) {
     margin-bottom: 30px;
   }
-  h2 {
-    font-size: 22px;
-    color: $color_gray;
-    font-style: italic;
+  .h2AndBtn {
+    display: flex;
+    justify-content: space-between;
     background-color: $base_color;
-    padding: 20px 15px 20px;
-    input {
-      float: right;
-      &[type=submit] {   
-        border: none;
-        background: #ff4c29;
-        color: #fff;
-        width: auto;
-        cursor: pointer;
-        padding: 3px 20px 3px;
-        &:hover {
-          opacity: .8;
-        }
+    align-items: center;
+    h2 {
+      font-size: 22px;
+      color: $color_gray;
+      font-style: italic;
+      padding: 20px 15px 20px;
+    }
+    .add,.purge {
+      height: 30px;
+      line-height: 30px;
+      margin-right: 15px;
+      border: none;
+      background: #ff4c29;
+      color: #fff;
+      width: auto;
+      cursor: pointer;
+      padding: 0px 15px;
+      vertical-align: middle;
+      font-size: 14px;
+      &:hover {
+        opacity: .8;
       }
     }
   }
@@ -280,12 +287,11 @@ body{
       &[type=text],&[type=url] {
         width: 100%;
         border: none;
-        margin: 10px 0 0;
+        margin: 5px 0 0;
         padding: 9px 12px;
         box-sizing: border-box;
         background: $color_gray3;
         color: $color_gray;
-        // border: 1px solid #ccc;
         &::placeholder {
           color: $color_gray2;
         }
@@ -297,7 +303,6 @@ body{
   }
   ul {
     list-style: none;
-    // border-top: 1px solid $color_gray;
     overflow-y: auto;
     max-height: 600px;
     &::-webkit-scrollbar {
@@ -312,10 +317,9 @@ body{
     }
     li {
       display: flex;
-      padding: 10px 20px;
+      padding: 10px 15px;
       font-size: 16px;
       line-height: 1.5;
-      // border-bottom: 1px solid $color_gray;
       &:nth-child(odd){
         background-color: $sub_color1;
       }
