@@ -38,6 +38,9 @@ class todo
         case 'purge':
           $this->purge();
           break;
+        case 'addYoutube':
+          $this->addYoutube();
+          break;
         default:
           exit;
       }
@@ -106,4 +109,14 @@ class todo
     $todos = $stmt->fetchAll();
     return $todos;
   }
+
+  public function addYoutube()
+  {
+    define('FILENAME', 'app/youtube.txt');
+    $youtube = trim(filter_input(INPUT_POST, 'youtube'));
+    $fp = fopen(FILENAME, 'a');
+    fwrite($fp, $youtube . "\n");
+    fclose($fp);
+  }
+
 }

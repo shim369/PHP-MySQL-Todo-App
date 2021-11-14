@@ -2,6 +2,10 @@
 // 相対パスでrequireすると、想定しない読み込みエラーが起きることがあるので、__DIR__で絶対パスを示すようにする
 require_once(__DIR__ . '/app/config.php');
 
+define('FILENAME', 'app/youtube.txt');
+$videos = file(FILENAME, FILE_IGNORE_NEW_LINES);
+$arrays = array_rand($videos, 1);
+$video = $videos[$arrays];
 // Database classが出てきたらMyApp\をつけて呼び出してくれる
 use MyApp\Database;
 
@@ -17,6 +21,7 @@ $todo = new Todo($pdo);
 $todo->processPost();
 // Todoを表示するために配列を取得するメソッドをgetAll()にする
 $todos = $todo->getAll();
+
 
 ?>
 
@@ -68,7 +73,7 @@ $todos = $todo->getAll();
           <form action="?action=add" method="post">
             <div class="h2AndBtn">
               <h2 class="clearfix">
-                Todoを追加しよう！
+                Add Todo
               </h2>
                 <input type="submit" class="add" value="追加">
                 <!-- 上で作って仕込んだセッションのトークンの値をフォームに仕込む -->
@@ -118,18 +123,36 @@ $todos = $todo->getAll();
     
     <aside class="aside">
         <div class="timerbox">
+            <div class="h2AndBtn">
+              <h2 class="clearfix">
+              Work 25min
+              </h2>
+            </div>
           <div id="timer">25:00</div>
           <div class="controls">
             <button id="start">Start</button>
             <button id="stop">Stop</button>
             <button id="reset">Reset</button>
           </div>
-          <div id="open">
-            5分休憩動画を見る
-          </div>
+        </div>
+        <div class="timerbox">
+            <div class="h2AndBtn">
+              <h2 class="clearfix">
+              Rest 5min
+              </h2>
+              <div id="open">
+                動画を見る
+              </div>
+            </div>
+          <!--<form action="?action=addYoutube" method="post" class="videoForm">
+             <input type="text" placeholder="動画ID" name="youtube">
+                <input type="submit" class="addYoutube" value="動画を追加">
+                <input type="hidden" name="token" value="<?/*= Utils::h($_SESSION['token']); */?>"> 
+          </form>-->
           <div id="mask" class="hidden">
             <section id="modal" class="hidden">
-              <div id="youtube_box"></div>
+              <div id="youtube_box"></iframe>
+              </div>
               <div id="close">
                 閉じる
               </div>

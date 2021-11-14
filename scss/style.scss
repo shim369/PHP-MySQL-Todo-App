@@ -380,16 +380,29 @@ body{
 /* timer
 ----------------------------------*/
 .timerbox {
+  .h2AndBtn {
+    display: flex;
+    justify-content: space-between;
+    background-color: $base_color;
+    align-items: center;
+    h2 {
+      font-size: 22px;
+      color: $color_gray;
+      font-style: italic;
+      padding: 20px 15px 20px;
+    }
+  }
   box-sizing: border-box;
   width: 100%;
   background-color: $sub_color2;
   padding: 5px;
-  margin-bottom: 30px;
+  margin-bottom: 50px;
   box-shadow: 0px 3px 3px 3px rgba(44,57,75,.7);
   #timer{
     text-align: center;
+    margin-top: 10px;
     padding: 10px 15px 10px;
-    background-color: $base_color;
+    background: $color_gray3;
     color: $color_gray;
     font-size: 40px;
   }
@@ -400,18 +413,70 @@ body{
     button {
       padding: 8px 20px;
       cursor: pointer;
-      color: $color_gray2;
+      color: $txt_color2;
       border: none;
-      background: $color_gray3;
+      background-color: $color-red;
       &:hover {
         opacity: .8;
       }
     }
   }
+  .videoForm {
+    margin: 5px 0 10px;
+    display: flex;
+    .addYoutube {
+      height: 30px;
+      line-height: 30px;
+      margin-left: 5px;
+      border: none;
+      background: #ff4c29;
+      color: #fff;
+      width: auto;
+      cursor: pointer;
+      padding: 0px 15px;
+      vertical-align: middle;
+      font-size: 14px;
+      &:hover {
+        opacity: .8;
+      }
+    }
+    input {
+      &[type=text]{
+        width: 100%;
+        border: none;
+        padding: 7px 12px;
+        box-sizing: border-box;
+        background: $color_gray3;
+        color: $color_gray;
+        &::placeholder {
+          color: $color_gray2;
+        }
+        &:focus {
+          outline: none;
+        }
+      }
+     }
+  }
 }
 /* modal
 ----------------------------------*/
-#open,#close {
+#open {
+  height: 30px;
+  line-height: 30px;
+  margin-right: 15px;
+  border: none;
+  background: #ff4c29;
+  color: #fff;
+  width: auto;
+  cursor: pointer;
+  padding: 0px 15px;
+  vertical-align: middle;
+  font-size: 14px;
+  &:hover {
+    opacity: .8;
+  }
+}
+#close {
   cursor: pointer;
   width: 100%;
   text-align: center;
