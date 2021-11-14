@@ -223,7 +223,7 @@ body{
 .container {
   width: 95%;
   display: flex;
-  margin: 50px auto 0;
+  margin: 30px auto 0;
   justify-content: space-around;
   flex: 1;
   @include for-size(phone-only) {
@@ -246,7 +246,7 @@ body{
 /* add-list
 ----------------------------------*/
 .add-list {
-  margin: 0 auto 50px;
+  margin: 0 auto 30px;
   background: $sub_color2;
   box-sizing: border-box;
   padding: 5px;
@@ -304,7 +304,7 @@ body{
   ul {
     list-style: none;
     overflow-y: auto;
-    max-height: 600px;
+    max-height: 300px;
     &::-webkit-scrollbar {
       width: 5px;
     }
@@ -380,6 +380,12 @@ body{
 /* timer
 ----------------------------------*/
 .timerbox {
+  box-sizing: border-box;
+  width: 100%;
+  background-color: $sub_color2;
+  padding: 5px;
+  margin-bottom: 30px;
+  box-shadow: 0px 3px 3px 3px rgba(44,57,75,.7);
   .h2AndBtn {
     display: flex;
     justify-content: space-between;
@@ -392,22 +398,16 @@ body{
       padding: 20px 15px 20px;
     }
   }
-  box-sizing: border-box;
-  width: 100%;
-  background-color: $sub_color2;
-  padding: 5px;
-  margin-bottom: 50px;
-  box-shadow: 0px 3px 3px 3px rgba(44,57,75,.7);
   #timer{
     text-align: center;
-    margin-top: 10px;
-    padding: 10px 15px 10px;
+    margin-top: 5px;
+    padding: 5px 15px 5px;
     background: $color_gray3;
     color: $color_gray;
     font-size: 40px;
   }
   .controls{
-    padding: 10px 10px 5px;
+    padding: 5px 10px 0;
     display: flex;
     justify-content: space-around;
     button {
