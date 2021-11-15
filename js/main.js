@@ -1,44 +1,55 @@
 'use strict';
 {
+  const token = document.querySelector('main').dataset.token;
   //チェックボッスに変化があると（チェックを入れると）チェックボックスのformでidが送信され、テーブルのis_doneカラムにtrueが入る。
   const checkboxes = document.querySelectorAll('input[type="checkbox"]');
 
   checkboxes.forEach(checkbox => {
-    checkbox.addEventListener('change',()=>{
-      checkbox.parentNode.submit();
+    checkbox.addEventListener('change', () => {
+      fetch('?action=toggle', {
+        method: 'POST',
+        body: new URLSearchParams({
+          id: checkbox.dataset.id,
+          token: token,
+        }),
+      });
     });
   });
 
   const deletes = document.querySelectorAll('.delete');
   deletes.forEach(span => {
-    span.addEventListener('click',()=>{
+    span.addEventListener('click',() => {
       if (!confirm('Are you sure?')) {
         return;
       }
-      span.parentNode.submit();
+      fetch('?action=delete', {
+        method: 'POST',
+        body: new URLSearchParams({
+          id: span.dataset.id,
+          token: token,
+        }),
+      });
+      span.parentNode.remove();
     });
   });
 
   const purge = document.querySelector('.purge');
-  purge.addEventListener('click',()=>{
+  purge.addEventListener('click',() => {
     if (!confirm('Are you sure?')) {
       return;
     }
-    purge.closest('form').submit();
+    fetch('?action=purge', {
+      method: 'POST',
+      body: new URLSearchParams({
+        token: token,
+      }),
+    });
+      const lis = document.querySelectorAll('li');
+      lis.forEach(li => {
+        if (li.children[0].checked) {
+          li.remove();
+        }
+      });
   });
 
-  //hamburgerMenu
-  const openMenu = document.getElementById('open-menu');
-  const overlay = document.querySelector('.overlay');
-  const closeMenu = document.getElementById('close-menu');
-
-  openMenu.addEventListener('click',()=>{
-    overlay.classList.add('show-menu');
-    openMenu.classList.add('hide');
-  });
-  closeMenu.addEventListener('click',()=>{
-    overlay.classList.remove('show-menu');
-    openMenu.classList.remove('hide');
-  });
-  
 }

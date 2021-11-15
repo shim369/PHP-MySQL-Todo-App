@@ -36,40 +36,9 @@ $dones = $todo->doneAll();
 </head>
 <body>
   <div id="app">
-    <header class="header">
-      <h1>Todo App</h1>
-      <nav class="pc-menu">
-        <ul class="dropdown">
-          <li><a href="https://github.com/shim369" target="_blank">Github</a></li>
-          <li><a href="https://dotinstall.com/home" target="_blank">Dotinstall</a></li>
-          <li class="menu__single">
-            <a href="">More</a>
-            <ul class="menu__second-level">
-              <li><a href="https://leetcode.com/" target="_blank">LeetCode</a></li>
-              <li><a href="https://jsprimer.net/" target="_blank">JavaScript Primer</a></li>
-              <li><a href="https://prog-8.com/dashboard" target="_blank">Progate</a></li>
-            </ul>
-          </li>
-        </ul>
-      </nav>
-      <div class="sp-menu">
-        <span id="open-menu" class="material-icons">menu</span>
-      </div> 
-    </header>
-    <div class="overlay">
-      <span id="close-menu" class="material-icons">close</span>
-      <nav>
-        <ul>
-          <li><a href="https://github.com/shim369" target="_blank">Github</a></li>
-          <li><a href="https://dotinstall.com/home" target="_blank">Dotinstall</a></li>
-          <li><a href="https://leetcode.com/" target="_blank">LeetCode</a></li>
-          <li><a href="https://jsprimer.net/" target="_blank">JavaScript Primer</a></li>
-          <li><a href="https://prog-8.com/dashboard" target="_blank">Progate</a></li>
-        </ul>
-      </nav>
-    </div>
+    <?php include('header.php') ?>
     <div class="container">
-    <main class="main">
+    <main class="main" data-token="<?= Utils::h($_SESSION['token']); ?>">
       <section class="add-list">
           <form action="?action=add" method="post">
             <div class="h2AndBtn">
@@ -77,7 +46,6 @@ $dones = $todo->doneAll();
                 Add Todo
               </h2>
                 <input type="submit" class="add" value="追加">
-                <!-- 上で作って仕込んだセッションのトークンの値をフォームに仕込む -->
                 <input type="hidden" name="token" value="<?= Utils::h($_SESSION['token']); ?>">
             </div>
             <input type="text" name="title" placeholder="Todo Title">
@@ -90,18 +58,15 @@ $dones = $todo->doneAll();
               <h2 class="clearfix">
                 Todo List
               </h2>
+              <a href="done.php">Done List</a>
             </div>
           </form>
 
         <ul>
           <?php foreach ($todos as $todo) {; ?>
           <li>
-            <form action="?action=toggle" method="post">
-              <input type="checkbox" <?= $todo->is_done ? 'checked' : ''; ?>>
-              <input type="hidden" name="id" value="<?= Utils::h($todo->id); ?>">
-              <input type="hidden" name="token" value="<?= Utils::h($_SESSION['token']); ?>">
-            </form>
-            <span class="<?= $todo->is_done ? 'done' : ''; ?>">
+            <input type="checkbox" data-id="<?= Utils::h($todo->id); ?>" <?= $todo->is_done ? 'checked' : ''; ?>>
+            <span>
             <?php if ($todo->urls) {; ?>
             <a href="<?= Utils::h($todo->urls); ?>" target="_blank"><?= Utils::h($todo->title); ?></a>
             <?php } else {; ?>
@@ -109,52 +74,16 @@ $dones = $todo->doneAll();
             <?php }; ?>
             </span>
             
-            <form action="?action=delete" method="post" class="delete-form">
-            <span class="delete"><img src="img/batsu.png" alt=""></span>
-              <input type="hidden" name="id" value="<?= Utils::h($todo->id); ?>">
-              <input type="hidden" name="token" value="<?= Utils::h($_SESSION['token']); ?>">
-            </form>
+            <span data-id="<?= Utils::h($todo->id); ?>" class="delete"><img src="img/batsu.png" alt=""></span>
           </li>
           <?php }; ?>
         </ul>
       </section>
-      <section class="add-list">
-            <div class="h2AndBtn">
-              <h2 class="clearfix">
-              Done List
-              </h2>
-              <div class="purge">一括削除</div>
-                <input type="hidden" name="token" value="<?= Utils::h($_SESSION['token']); ?>">
-            </div>
-            <ul>
-              <?php foreach ($dones as $done) {; ?>
-              <li>
-                <form action="?action=toggle" method="post">
-                  <input type="checkbox" <?= $done->is_done ? 'checked' : ''; ?>>
-                  <input type="hidden" name="id" value="<?= Utils::h($done->id); ?>">
-                  <input type="hidden" name="token" value="<?= Utils::h($_SESSION['token']); ?>">
-                </form>
-                <span>
-                <?php if ($done->urls) {; ?>
-                <a href="<?= Utils::h($done->urls); ?>" target="_blank"><?= Utils::h($done->title); ?></a>
-                <?php } else { ; ?>
-                <?= Utils::h($done->title); ?>
-                <?php }; ?>
-                </span>
-            
-                <form action="?action=delete" method="post" class="delete-form">
-                <span class="delete"><img src="img/batsu.png" alt=""></span>
-                  <input type="hidden" name="id" value="<?= Utils::h($done->id); ?>">
-                  <input type="hidden" name="token" value="<?= Utils::h($_SESSION['token']); ?>">
-                </form>
-              </li>
-              <?php }; ?>
-            </ul>
-      </section>
+   
     </main>
     
     <aside class="aside">
-        <div class="timerbox">
+        <div class="sideBox">
             <div class="h2AndBtn">
               <h2 class="clearfix">
               Work 25min
@@ -168,7 +97,7 @@ $dones = $todo->doneAll();
           </div>
         </div>
 
-        <div class="timerbox">
+        <div class="sideBox">
             <div class="h2AndBtn">
               <h2 class="clearfix">
               Rest 5min
@@ -197,6 +126,7 @@ $dones = $todo->doneAll();
       </aside>
   </div>
   </div>
+  <script src="js/menu.js"></script>
   <script src="js/main.js"></script>
   <script src="js/timerYoutube.js"></script>
 </body>
