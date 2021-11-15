@@ -21,6 +21,7 @@ $todo = new Todo($pdo);
 $todo->processPost();
 // Todoを表示するために配列を取得するメソッドをgetAll()にする
 $todos = $todo->getAll();
+$dones = $todo->doneAll();
 
 
 ?>
@@ -89,8 +90,6 @@ $todos = $todo->getAll();
               <h2 class="clearfix">
                 Todo List
               </h2>
-              <div class="purge">一括削除</div>
-                <input type="hidden" name="token" value="<?= Utils::h($_SESSION['token']); ?>">
             </div>
           </form>
 
@@ -119,6 +118,39 @@ $todos = $todo->getAll();
           <?php }; ?>
         </ul>
       </section>
+      <section class="add-list">
+            <div class="h2AndBtn">
+              <h2 class="clearfix">
+              Done List
+              </h2>
+              <div class="purge">一括削除</div>
+                <input type="hidden" name="token" value="<?= Utils::h($_SESSION['token']); ?>">
+            </div>
+            <ul>
+              <?php foreach ($dones as $done) {; ?>
+              <li>
+                <form action="?action=toggle" method="post">
+                  <input type="checkbox" <?= $done->is_done ? 'checked' : ''; ?>>
+                  <input type="hidden" name="id" value="<?= Utils::h($done->id); ?>">
+                  <input type="hidden" name="token" value="<?= Utils::h($_SESSION['token']); ?>">
+                </form>
+                <span>
+                <?php if ($done->urls) {; ?>
+                <a href="<?= Utils::h($done->urls); ?>" target="_blank"><?= Utils::h($done->title); ?></a>
+                <?php } else { ; ?>
+                <?= Utils::h($done->title); ?>
+                <?php }; ?>
+                </span>
+            
+                <form action="?action=delete" method="post" class="delete-form">
+                <span class="delete"><img src="img/batsu.png" alt=""></span>
+                  <input type="hidden" name="id" value="<?= Utils::h($done->id); ?>">
+                  <input type="hidden" name="token" value="<?= Utils::h($_SESSION['token']); ?>">
+                </form>
+              </li>
+              <?php }; ?>
+            </ul>
+      </section>
     </main>
     
     <aside class="aside">
@@ -135,6 +167,7 @@ $todos = $todo->getAll();
             <button id="reset">Reset</button>
           </div>
         </div>
+
         <div class="timerbox">
             <div class="h2AndBtn">
               <h2 class="clearfix">
@@ -159,6 +192,8 @@ $todos = $todo->getAll();
             </section>
           </div>
         </div>
+
+        
       </aside>
   </div>
   </div>

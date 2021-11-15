@@ -104,10 +104,20 @@ class todo
   }
 
   //DBにアクセスしデータを取得する関数に定義
+  public function doneAll()
+  {
+    // PDOからdoneとなったレコードを取得
+    $stmt = $this->pdo->query("SELECT * FROM todos WHERE is_done = 1 ORDER BY id DESC");
+    // SQL文の結果が帰ってくる
+    $dones = $stmt->fetchAll();
+    return $dones;
+  }
+
+  //DBにアクセスしデータを取得する関数に定義
   public function getAll()
   {
-    // PDOからすべてのレコードを取得
-    $stmt = $this->pdo->query("SELECT * FROM todos ORDER BY id DESC");
+    // PDOからまだdoneになっていないレコードを取得
+    $stmt = $this->pdo->query("SELECT * FROM todos WHERE is_done = 0 ORDER BY id DESC");
     // SQL文の結果が帰ってくる
     $todos = $stmt->fetchAll();
     return $todos;
