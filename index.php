@@ -127,6 +127,16 @@ $dones = $todo->doneAll();
   </div>
   </div>
   <script src="js/menu.js"></script>
+  <script> 
+  function liRemove() {
+  const lis = document.querySelectorAll('li');
+    lis.forEach(li => {
+      if (li.children[0].checked) {
+        li.remove();
+      }
+    });
+  }
+  </script>
   <script src="js/main.js"></script>
   <script src="js/timerYoutube.js"></script>
 </body>

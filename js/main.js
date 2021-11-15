@@ -13,6 +13,7 @@
           token: token,
         }),
       });
+      liRemove();
     });
   });
 
@@ -44,7 +45,7 @@
         token: token,
       }),
     });
-      const lis = document.querySelectorAll('li');
+    const lis = document.querySelectorAll('li');
       lis.forEach(li => {
         if (li.children[0].checked) {
           li.remove();
