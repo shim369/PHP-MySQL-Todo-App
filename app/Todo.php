@@ -89,14 +89,17 @@ class todo
     if(empty($id)) {
       return;
     }
-  //チェックボッスに変化があると（チェックを入れると）チェックボックスのformでidが送信され、テーブルのis_doneカラムにtrueが入る。formの送信イベントはmain.jsに記載。
+    //チェックボッスに変化があると（チェックを入れると）チェックボックスのformでidが送信され、テーブルのis_doneカラムにtrueが入る。formの送信イベントはmain.jsに記載。idなどの「値」を埋め込むSQLの場合、セキュリティのために、プリペアドステートメントでSQLを安全に処理できるようにする。
     $stmt = $this->pdo->prepare("DELETE FROM todos WHERE id = :id");
+    //>execute()で値を埋め込むだけだと、文字列になるので、明示的に型を指定する場合、bindValueで型指定する
     $stmt->bindValue('id', $id, \PDO::PARAM_INT);
+    //値を埋め込む処理。//execute関数とは、PHPの標準関数でプリペアドステートメントを実行する際に使われる関数です。プリペアドステートメントは、SQL文で値が変わる可能性がある箇所に対して、変数のように別の文字列を入れておき、後で置き換える仕組みです。SQLインジェクションの対策としても使われています。
     $stmt->execute();
   }
 
   private function purge()
   {
+    //値を埋め込まないSQLでは、queryでOK
     $this->pdo->query("DELETE FROM todos WHERE is_done = 1");
   }
 
