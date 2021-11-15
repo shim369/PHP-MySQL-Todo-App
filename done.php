@@ -42,7 +42,7 @@ $dones = $todo->doneAll();
               <h2 class="clearfix">
               Done List
               </h2>
-              <div class="purge">一括削除</div>
+              <a href="./">Todo List</a>
             </div>
             <ul>
               <?php foreach ($dones as $done) {; ?>
