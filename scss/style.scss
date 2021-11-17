@@ -246,53 +246,64 @@ body{
     width: 96%;
   }
 }
+
+/* Title
+----------------------------------*/
+.ttl-box {
+  display: flex;
+  justify-content: space-between;
+  background-color: $base_color;
+  align-items: center;
+  h2 {
+    font-size: 22px;
+    color: $color_gray;
+    font-style: italic;
+    padding: 20px 15px 20px;
+    .material-icons {
+      font-size: 17px;
+    }
+    .ttl {
+      margin-left: 5px;
+    }
+  }
+  .add, a {
+    padding: 0px 20px;
+    margin-right: 15px;
+  }
+}
+
+/* button
+----------------------------------*/
+.btn {
+  height: 30px;
+  line-height: 30px;
+  padding: 0px 7%;
+  cursor: pointer;
+  color: $txt_color2;
+  border: none;
+  background-color: $color-red;
+  border-radius: 2px;
+  margin: 0 1%;
+  text-decoration: none;
+  font-size: 14px;
+  &:hover {
+    opacity: .8;
+  }
+}
+
+/* common-box 
+----------------------------------*/
+.common-box {
+  box-sizing: border-box;
+  background-color: $sub_color2;
+  padding: 5px;
+  margin: 0 auto 30px;
+  box-shadow: 0px 3px 3px 3px rgba(44,57,75,.7);
+}
+
 /* add-list
 ----------------------------------*/
 .add-list {
-  margin: 0 auto 30px;
-  background: $sub_color2;
-  box-sizing: border-box;
-  padding: 5px;
-  box-shadow: 0px 3px 3px 3px rgba(44,57,75,.7);
-  @include for-size(phone-only) {
-    margin-bottom: 30px;
-  }
-  .ttl-box {
-    display: flex;
-    justify-content: space-between;
-    background-color: $base_color;
-    align-items: center;
-    h2 {
-      font-size: 22px;
-      color: $color_gray;
-      font-style: italic;
-      padding: 20px 15px 20px;
-      .material-icons {
-        font-size: 17px;
-      }
-      .ttl {
-        margin-left: 5px;
-      }
-    }
-    .add,.purge,a {
-      height: 30px;
-      line-height: 30px;
-      margin-right: 15px;
-      border: none;
-      background: #ff4c29;
-      color: #fff;
-      width: auto;
-      cursor: pointer;
-      padding: 0px 15px;
-      vertical-align: middle;
-      font-size: 14px;
-      text-decoration: none;
-      border-radius: 2px;
-      &:hover {
-        opacity: .8;
-      }
-    }
-  }
   form {
     input {
       &[type=text],&[type=url] {
@@ -394,31 +405,7 @@ body{
 }
 /* timer
 ----------------------------------*/
-.sideBox {
-  box-sizing: border-box;
-  width: 100%;
-  background-color: $sub_color2;
-  padding: 5px;
-  margin-bottom: 30px;
-  box-shadow: 0px 3px 3px 3px rgba(44,57,75,.7);
-  .ttl-box {
-    display: flex;
-    justify-content: space-between;
-    background-color: $base_color;
-    align-items: center;
-    h2 {
-      font-size: 22px;
-      color: $color_gray;
-      font-style: italic;
-      padding: 20px 15px 20px;
-      .material-icons {
-        font-size: 17px;
-      }
-      .ttl {
-        margin-left: 5px;
-      }
-    }
-  }
+.side-box {
   #timer{
     text-align: center;
     margin-top: 5px;
@@ -431,20 +418,6 @@ body{
     padding: 15px 10px 10px;
     display: flex;
     justify-content: space-around;
-    button {
-      height: 30px;
-      line-height: 30px;
-      padding: 0px 20px;
-      cursor: pointer;
-      color: $txt_color2;
-      border: none;
-      background-color: $color-red;
-      border-radius: 2px;
-      margin: 0 1%;
-      &:hover {
-        opacity: .8;
-      }
-    }
   }
   .videoForm {
     margin: 5px 0 10px;
@@ -454,7 +427,7 @@ body{
       line-height: 30px;
       margin-left: 5px;
       border: none;
-      background: #6a433b;
+      background: $color-red;
       color: #fff;
       width: auto;
       cursor: pointer;
@@ -486,36 +459,20 @@ body{
 /* modal
 ----------------------------------*/
 #open {
-  height: 30px;
-  line-height: 30px;
-  border: none;
-  background: #ff4c29;
-  color: #fff;
-  width: 108px;
-  margin: 15px auto 10px;
-  cursor: pointer;
-  font-size: 14px;
-  text-align: center;
-  border-radius: 2px;
-  &:hover {
-    opacity: .8;
+  button {
+    display: block;
+    margin: 15px auto 10px;
+    text-align: center;
   }
 }
+
 #close {
-  cursor: pointer;
-  width: 100%;
-  text-align: center;
-  padding: 8px 0;
-  margin: 5px auto 0;
-  background-color: $color-red;
-  color: $txt_color2;
-  font-size: 16px;
-  &:hover {
-    opacity: .9;
+  button {
+    width: 100%;
+    border-radius: 0;
+    margin: 5px 0 0;
   }
 }
-
-
 
 #mask {
   background: rgba(0,0,0,.7);
@@ -551,5 +508,12 @@ body{
   }
   > p {
     margin: 0 0 20px;
+  }
+  #youtube_box {
+    iframe {
+      @include for-size(phone-only) {
+        height: auto;
+      }
+    }
   }
 }

@@ -38,12 +38,12 @@ $dones = $todo->doneAll();
     <?php include('header.php') ?>
     <div class="container">
     <main class="main" data-token="<?= Utils::h($_SESSION['token']); ?>">
-      <section class="add-list">
+      <section class="add-list common-box">
             <div class="ttl-box">
               <h2 class="clearfix">
               <span class="material-icons">list</span><span class="ttl">Done List</span>
               </h2>
-              <a href="./">Todo List</a>
+              <a href="./" class="btn">Todo List</a>
             </div>
             <ul>
               <?php foreach ($dones as $done) {; ?>

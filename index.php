@@ -40,26 +40,26 @@ $dones = $todo->doneAll();
     <?php include('header.php') ?>
     <div class="container">
     <main class="main" data-token="<?= Utils::h($_SESSION['token']); ?>">
-      <section class="add-list">
+      <section class="add-list common-box">
           <form action="?action=add" method="post">
             <div class="ttl-box">
               <h2>
               <span class="material-icons">add_circle_outline</span><span class="ttl">Add Todo</span>
               </h2>
-                <input type="submit" class="add" value="Add">
+                <input type="submit" class="add btn" value="Add">
                 <input type="hidden" name="token" value="<?= Utils::h($_SESSION['token']); ?>">
             </div>
             <input type="text" name="title" placeholder="Todo Title">
             <input type="url" name="urls" placeholder="Todo URL">
           </form>
       </section>
-      <section class="add-list">
+      <section class="add-list common-box">
           <form action="?action=purge" method="post">
             <div class="ttl-box">
               <h2>
               <span class="material-icons">list</span><span class="ttl">Todo List</span>
               </h2>
-              <a href="done.php">Done List</a>
+              <a href="done.php" class="btn">Done List</a>
             </div>
           </form>
 
@@ -85,7 +85,7 @@ $dones = $todo->doneAll();
     </main>
     
     <aside class="aside">
-        <div class="sideBox">
+        <div class="side-box common-box">
             <div class="ttl-box">
               <h2>
               <span class="material-icons">timer</span><span class="ttl">Work 25min</span>
@@ -93,13 +93,13 @@ $dones = $todo->doneAll();
             </div>
           <div id="timer">25:00</div>
           <div class="controls">
-            <button id="start">Start</button>
-            <button id="stop">Stop</button>
-            <button id="reset">Reset</button>
+            <button id="start" class="btn">Start</button>
+            <button id="stop" class="btn">Stop</button>
+            <button id="reset" class="btn">Reset</button>
           </div>
         </div>
 
-        <div class="sideBox">
+        <div class="side-box common-box">
             <div class="ttl-box">
               <h2>
               <span class="material-icons">play_circle_outline</span><span class="ttl">Rest 5min</span>
@@ -107,7 +107,7 @@ $dones = $todo->doneAll();
             </div>
             
             <div id="open">
-              <span>YouTube</span>
+              <button class="btn">YouTube</button>
             </div>
           <!--<form action="?action=addYoutube" method="post" class="videoForm">
              <input type="text" placeholder="動画ID" name="youtube">
@@ -119,7 +119,7 @@ $dones = $todo->doneAll();
               <div id="youtube_box"></iframe>
               </div>
               <div id="close">
-                Close
+                <button class="btn">Close</button>
               </div>
             </section>
           </div>
