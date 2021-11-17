@@ -41,9 +41,9 @@ $dones = $todo->doneAll();
     <main class="main" data-token="<?= Utils::h($_SESSION['token']); ?>">
       <section class="add-list">
           <form action="?action=add" method="post">
-            <div class="h2AndBtn">
-              <h2 class="clearfix">
-                Add Todo
+            <div class="ttl-box">
+              <h2>
+              <span class="material-icons">add_circle_outline</span><span class="ttl">Add Todo</span>
               </h2>
                 <input type="submit" class="add" value="Add">
                 <input type="hidden" name="token" value="<?= Utils::h($_SESSION['token']); ?>">
@@ -54,9 +54,9 @@ $dones = $todo->doneAll();
       </section>
       <section class="add-list">
           <form action="?action=purge" method="post">
-            <div class="h2AndBtn">
-              <h2 class="clearfix">
-                Todo List
+            <div class="ttl-box">
+              <h2>
+              <span class="material-icons">list</span><span class="ttl">Todo List</span>
               </h2>
               <a href="done.php">Done List</a>
             </div>
@@ -85,9 +85,9 @@ $dones = $todo->doneAll();
     
     <aside class="aside">
         <div class="sideBox">
-            <div class="h2AndBtn">
-              <h2 class="clearfix">
-              Work 25min
+            <div class="ttl-box">
+              <h2>
+              <span class="material-icons">timer</span><span class="ttl">Work 25min</span>
               </h2>
             </div>
           <div id="timer">25:00</div>
@@ -99,9 +99,9 @@ $dones = $todo->doneAll();
         </div>
 
         <div class="sideBox">
-            <div class="h2AndBtn">
-              <h2 class="clearfix">
-              Rest 5min
+            <div class="ttl-box">
+              <h2>
+              <span class="material-icons">coffee</span><span class="ttl">Rest 5min</span>
               </h2>
             </div>
             

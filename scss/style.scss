@@ -260,7 +260,7 @@ body{
   @include for-size(phone-only) {
     margin-bottom: 30px;
   }
-  .h2AndBtn {
+  .ttl-box {
     display: flex;
     justify-content: space-between;
     background-color: $base_color;
@@ -270,6 +270,9 @@ body{
       color: $color_gray;
       font-style: italic;
       padding: 20px 15px 20px;
+      .ttl {
+        margin-left: 5px;
+      }
     }
     .add,.purge,a {
       height: 30px;
@@ -397,7 +400,7 @@ body{
   padding: 5px;
   margin-bottom: 30px;
   box-shadow: 0px 3px 3px 3px rgba(44,57,75,.7);
-  .h2AndBtn {
+  .ttl-box {
     display: flex;
     justify-content: space-between;
     background-color: $base_color;
@@ -407,6 +410,9 @@ body{
       color: $color_gray;
       font-style: italic;
       padding: 20px 15px 20px;
+      .ttl {
+        margin-left: 5px;
+      }
     }
   }
   #timer{
@@ -418,7 +424,7 @@ body{
     font-size: 35px;
   }
   .controls{
-    padding: 5px 10px 0;
+    padding: 15px 10px 10px;
     display: flex;
     justify-content: space-around;
     button {
@@ -475,7 +481,8 @@ body{
   border: none;
   background: $color-red;
   color: #fff;
-  width: auto;
+  width: 108px;
+  margin: 15px auto 10px;
   cursor: pointer;
   padding: 5px 15px;
   vertical-align: middle;
@@ -484,7 +491,6 @@ body{
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 5px 0 0;
   &:hover {
     opacity: .8;
   }
