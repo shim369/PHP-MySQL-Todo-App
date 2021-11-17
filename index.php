@@ -101,14 +101,13 @@ $dones = $todo->doneAll();
         <div class="sideBox">
             <div class="ttl-box">
               <h2>
-              <span class="material-icons">coffee</span><span class="ttl">Rest 5min</span>
+              <span class="material-icons">play_circle_outline</span><span class="ttl">Rest 5min</span>
               </h2>
             </div>
             
             <div id="open">
-            <span class="material-icons">
-            play_circle_outline
-            </span><span>YouTube</span></div>
+              <span>YouTube</span>
+            </div>
           <!--<form action="?action=addYoutube" method="post" class="videoForm">
              <input type="text" placeholder="動画ID" name="youtube">
                 <input type="submit" class="addYoutube" value="動画を追加">
