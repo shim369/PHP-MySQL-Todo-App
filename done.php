@@ -38,9 +38,9 @@ $dones = $todo->doneAll();
     <div class="container">
     <main class="main" data-token="<?= Utils::h($_SESSION['token']); ?>">
       <section class="add-list">
-            <div class="h2AndBtn">
+            <div class="ttl-box">
               <h2 class="clearfix">
-              Done List
+              <span class="material-icons">list</span><span class="ttl">Done List</span>
               </h2>
               <a href="./">Todo List</a>
             </div>
