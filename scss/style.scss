@@ -10,9 +10,6 @@ body{
   background: #334756;
   color: $color_gray2;
 }
-.material-icons {
-  font-size: 17px !important;
-}
 /* header
 ----------------------------------*/
 .header {
@@ -270,6 +267,9 @@ body{
       color: $color_gray;
       font-style: italic;
       padding: 20px 15px 20px;
+      .material-icons {
+        font-size: 17px !important;
+      }
       .ttl {
         margin-left: 5px;
       }
@@ -386,7 +386,7 @@ body{
 /* aside
 ----------------------------------*/
 .aside {
-  min-width: 350px;
+  width: 25%;
   margin: 0 2%;
   @include for-size(phone-only) {
     width: 96%;
@@ -411,6 +411,9 @@ body{
       color: $color_gray;
       font-style: italic;
       padding: 20px 15px 20px;
+      .material-icons {
+        font-size: 17px !important;
+      }
       .ttl {
         margin-left: 5px;
       }
@@ -437,6 +440,7 @@ body{
       border: none;
       background-color: $color-red;
       border-radius: 2px;
+      margin: 0 1%;
       &:hover {
         opacity: .8;
       }
