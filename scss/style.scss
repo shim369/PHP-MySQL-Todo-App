@@ -7,8 +7,11 @@
 
 body{
   font-family: $base_font;
-  background: $sub_color1;
+  background: #334756;
   color: $color_gray2;
+}
+.material-icons {
+  font-size: 17px !important;
 }
 /* header
 ----------------------------------*/
@@ -294,7 +297,7 @@ body{
         margin: 5px 0 0;
         padding: 9px 12px;
         box-sizing: border-box;
-        background: $color_gray3;
+        background: $sub_color1;
         color: $color_gray;
         &::placeholder {
           color: $color_gray2;
@@ -326,7 +329,7 @@ body{
       line-height: 1.5;
       position: relative;
       &:nth-child(odd){
-        background-color: $sub_color1;
+        background-color: #2d3b4d;
       }
       input {
         position: absolute;
@@ -364,7 +367,8 @@ body{
       margin-left: auto;
       cursor: pointer;
       position: relative;
-      top: -4px;
+      top: 3px;
+      color: $color_gray2;
       img {
         width: 15px;
         &:hover {
@@ -409,7 +413,7 @@ body{
     text-align: center;
     margin-top: 5px;
     padding: 5px 15px 2px;
-    background: $color_gray3;
+    background: #344f62;
     color: $color_gray;
     font-size: 35px;
   }
@@ -418,7 +422,7 @@ body{
     display: flex;
     justify-content: space-around;
     button {
-      padding: 8px 20px;
+      padding: 5px 20px;
       cursor: pointer;
       color: $txt_color2;
       border: none;
@@ -436,7 +440,7 @@ body{
       line-height: 30px;
       margin-left: 5px;
       border: none;
-      background: #ff4c29;
+      background: #6a433b;
       color: #fff;
       width: auto;
       cursor: pointer;
@@ -468,17 +472,19 @@ body{
 /* modal
 ----------------------------------*/
 #open {
-  height: 30px;
-  line-height: 30px;
-  margin-right: 15px;
   border: none;
-  background: #ff4c29;
+  background: $color-red;
   color: #fff;
   width: auto;
   cursor: pointer;
-  padding: 0px 15px;
+  padding: 5px 15px;
   vertical-align: middle;
   font-size: 14px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 5px 0 0;
   &:hover {
     opacity: .8;
   }

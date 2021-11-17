@@ -56,7 +56,7 @@ $dones = $todo->doneAll();
                 <?php }; ?>
                 </span>
             
-                <span data-id="<?= Utils::h($done->id); ?>" class="delete"><img src="img/batsu.png" alt=""></span>
+                <span data-id="<?= Utils::h($done->id); ?>" class="delete"><span class="material-icons">delete</span></span>
               </li>
               <?php }; ?>
             </ul>

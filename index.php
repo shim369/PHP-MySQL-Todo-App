@@ -45,7 +45,7 @@ $dones = $todo->doneAll();
               <h2 class="clearfix">
                 Add Todo
               </h2>
-                <input type="submit" class="add" value="追加">
+                <input type="submit" class="add" value="Add">
                 <input type="hidden" name="token" value="<?= Utils::h($_SESSION['token']); ?>">
             </div>
             <input type="text" name="title" placeholder="Todo Title">
@@ -74,7 +74,8 @@ $dones = $todo->doneAll();
             <?php }; ?>
             </span>
             
-            <span data-id="<?= Utils::h($todo->id); ?>" class="delete"><img src="img/batsu.png" alt=""></span>
+            <span data-id="<?= Utils::h($todo->id); ?>" class="delete"><span class="material-icons">delete</span>
+            </span>
           </li>
           <?php }; ?>
         </ul>
@@ -102,10 +103,12 @@ $dones = $todo->doneAll();
               <h2 class="clearfix">
               Rest 5min
               </h2>
-              <div id="open">
-                動画を見る
-              </div>
             </div>
+            
+            <div id="open">
+            <span class="material-icons">
+            play_circle_outline
+            </span><span>YouTube</span></div>
           <!--<form action="?action=addYoutube" method="post" class="videoForm">
              <input type="text" placeholder="動画ID" name="youtube">
                 <input type="submit" class="addYoutube" value="動画を追加">
@@ -116,7 +119,7 @@ $dones = $todo->doneAll();
               <div id="youtube_box"></iframe>
               </div>
               <div id="close">
-                閉じる
+                Close
               </div>
             </section>
           </div>
