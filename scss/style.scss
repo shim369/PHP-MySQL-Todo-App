@@ -408,12 +408,18 @@ body{
     font-size: 35px;
   }
   .controls{
-    padding: 16px 8px 8px;
+    padding: 16px 0 8px;
     display: flex;
     justify-content: center;
     button {
       background: #946258;
       margin: 0 2%;
+      @include for-size(tablet) {
+        padding: 0 8px;
+      }
+      @include for-size(phone-only) {
+        padding: 0 16px;
+      }
     }
   }
   .videoForm {

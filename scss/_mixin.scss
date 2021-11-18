@@ -5,7 +5,7 @@
   @if $size == desktop { 
    @media all and  (max-width: 1414px) { @content; }
   }
-  @else if $size == tablet-landscape-up { 
+  @else if $size == tablet { 
    @media all and  (max-width: 769px) { @content; }
   } 
   @else if $size == phone-only {
