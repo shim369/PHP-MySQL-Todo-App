@@ -1,6 +1,7 @@
 <?php
 // 相対パスでrequireすると、想定しない読み込みエラーが起きることがあるので、__DIR__で絶対パスを示すようにする
 require_once(__DIR__ . '/app/config.php');
+require_once(__DIR__ . '/common.php'); 
 
 define('FILENAME', 'app/youtube.txt');
 $videos = file(FILENAME, FILE_IGNORE_NEW_LINES);
@@ -28,10 +29,9 @@ $dones = $todo->doneAll();
 <html lang="ja">
 <head>
   <meta charset="utf-8">
-  <title>Done List | PHP Todo App</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="css/style.css">
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<meta name="robots" content="noindex">
+  <title>Done List | <?php echo $title; ?></title>
+	<?php include('head.php') ?>
 </head>
 <body>
   <div id="app">
@@ -62,11 +62,9 @@ $dones = $todo->doneAll();
             </ul>
       </section>
     </main>
-    
-    
   </div>
   </div>
-  <script src="js/menu.js"></script>
+  <?php include('common_footer.php') ?>
   <script> 
   function liRemove() {
   const lis = document.querySelectorAll('li');
@@ -77,7 +75,5 @@ $dones = $todo->doneAll();
     });
   }
   </script>
-  <script src="js/main.js"></script>
-  <script src="js/timerYoutube.js"></script>
 </body>
 </html>
