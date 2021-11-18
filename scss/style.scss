@@ -398,17 +398,23 @@ body{
 ----------------------------------*/
 .side-box {
   #timer {
+    box-sizing: border-box;
     text-align: center;
     margin-top: 8px;
     padding: 8px 16px 4px;
     background: #344f62;
+    border: solid 1px #2d475a;
     color: $color_gray;
     font-size: 35px;
   }
   .controls{
     padding: 16px 8px 8px;
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
+    button {
+      background: #946258;
+      margin: 0 2%;
+    }
   }
   .videoForm {
     margin: 8px 0 8px;
