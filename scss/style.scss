@@ -14,7 +14,7 @@ body{
 ----------------------------------*/
 .header {
   width: 100%;
-  padding: 20px 0;
+  padding: 24px 0;
   display: flex;
   justify-content: space-between;
   background-color: $base_color;
@@ -22,17 +22,15 @@ body{
   box-shadow: 0px 3px 3px 3px rgba(44,57,75,.7);
   position: relative;
   @include for-size(phone-only) {
-    padding: 10px 0;
+    padding: 16px 0;
   }
-  h1{
-    position: relative;
-    top: 5px;
+  h1 {
     font-size: 40px;
     font-style: italic;
-    margin-left: 20px;
+    margin-left: 24px;
     @include for-size(phone-only) {
-      margin-left: 10px;
-      font-size: 30px;
+      margin-left: 8px;
+      font-size: 32px;
     }
     a {
       color: $color_gray;
@@ -46,12 +44,11 @@ body{
     @include for-size(phone-only) {
       display: block;
       position: absolute;
-      top: -6px;
+      top: 16px;
       right: 16px;
     }
     #open-menu {
       font-size: 32px;
-      line-height: 64px;
       cursor: pointer;
       &.hide {
         display: none;
@@ -61,7 +58,8 @@ body{
   .pc-menu {
     position: relative;
     margin-left: auto;
-    margin-right: 20px;
+    margin-right: 24px;
+    top: 6px;
     display: block;
     @include for-size(phone-only) {
       display: none;
@@ -78,10 +76,10 @@ body{
         font-size: 16px;
         text-align: center;
         @include for-size(phone-only) {
-          padding: 0 10px;
+          padding: 0 8px;
         }
         > a {
-          padding: 15px 27px;
+          padding: 8px 24px;
           display: block;
           color: $txt_color2;
           text-decoration: none;
@@ -106,7 +104,7 @@ body{
   background: -webkit-linear-gradient(top left, $base_color 0%,$sub_color1 100%);
   background: linear-gradient(to bottom right, $base_color 0%,$sub_color1 100%);
   text-align: center;
-  padding: 64px 35%;
+  padding: 64px 0;
   opacity: 0;
   pointer-events: none;
   transition: opacity .5s;
@@ -133,14 +131,14 @@ body{
         transition-delay: .5s;
       }
       a {
-        font-size: 23px;
+        font-size: 24px;
         color: $color-white;
       }
     }
   }
   #close-menu {
     position: absolute;
-    top: 11px;
+    top: 16px;
     right: 16px;
     font-size: 32px;
     cursor: pointer;
@@ -151,7 +149,7 @@ body{
     margin: 0;
     padding: 0;
     li {
-      margin-top: 24px;
+      margin-top: 32px;
       opacity: 0;
       transform: translateY(16px);
       transition: opacity .3s, transform .3s;
@@ -179,7 +177,7 @@ body{
       display: block;
       color: #fff;
       text-align: center;
-      padding: 15px 0;
+      padding: 16px 0;
       text-decoration: none;
     }
     &:hover {
@@ -205,7 +203,7 @@ body{
       position: relative;
       .menu__second-level {
         position: absolute;
-        top: 30px;
+        top: 32px;
         width: 114%;
         -webkit-transition: all .3s;
         transition: all .3s;
@@ -224,14 +222,13 @@ body{
 /* container
 ----------------------------------*/
 .container {
-  width: 95%;
+  width: 96%;
   display: flex;
-  margin: 30px auto 0;
+  margin: 32px auto 0;
   justify-content: space-around;
   flex: 1;
   @include for-size(phone-only) {
     width: 100%;
-    margin: 30px auto 0;
     flex-direction: column;
   }
 }
@@ -239,9 +236,9 @@ body{
 /* main
 ----------------------------------*/
 .main {
-  width: 100%;
+  width: 64%;
   flex: 1;
-  margin: 0 2%;
+  margin: 0 1%;
   @include for-size(phone-only) {
     width: 96%;
   }
@@ -255,34 +252,32 @@ body{
   background-color: $base_color;
   align-items: center;
   h2 {
-    font-size: 22px;
+    font-size: 24px;
     color: $color_gray;
     font-style: italic;
-    padding: 20px 15px 20px;
+    padding: 16px;
     .material-icons {
-      font-size: 17px;
+      font-size: 16px;
     }
     .ttl {
-      margin-left: 5px;
+      margin-left: 8px;
     }
   }
-  .add, a {
-    padding: 0px 20px;
-    margin-right: 15px;
+  .add, .alink {
+    margin-right: 16px;
   }
 }
 
 /* button
 ----------------------------------*/
 .btn {
-  height: 30px;
-  line-height: 30px;
-  padding: 0px 7%;
+  height: 32px;
+  line-height: 32px;
+  padding: 0px 16px;
   cursor: pointer;
   color: $txt_color2;
   border: none;
   background-color: $color-red;
-  border-radius: 2px;
   margin: 0 1%;
   text-decoration: none;
   font-size: 14px;
@@ -296,8 +291,8 @@ body{
 .common-box {
   box-sizing: border-box;
   background-color: $sub_color2;
-  padding: 5px;
-  margin: 0 auto 30px;
+  padding: 8px;
+  margin: 0 auto 32px;
   box-shadow: 0px 3px 3px 3px rgba(44,57,75,.7);
 }
 
@@ -309,8 +304,8 @@ body{
       &[type=text],&[type=url] {
         width: 100%;
         border: none;
-        margin: 5px 0 0;
-        padding: 9px 12px;
+        margin: 8px 0 0;
+        padding: 8px 16px;
         box-sizing: border-box;
         background: $sub_color1;
         color: $color_gray;
@@ -328,18 +323,18 @@ body{
     overflow-y: auto;
     max-height: 300px;
     &::-webkit-scrollbar {
-      width: 5px;
+      width: 8px;
     }
     &::-webkit-scrollbar-track {
-      box-shadow:0 0 5px $color_gray3 inset ;
+      box-shadow:0 0 8px $color_gray3 inset ;
     }
     &::-webkit-scrollbar-thumb {
       background: $color_gray3;
-      border-radius: 5px;
+      border-radius: 8px;
     }
     li {
       display: flex;
-      padding: 10px 15px;
+      padding: 8px 16px;
       font-size: 16px;
       line-height: 1.5;
       position: relative;
@@ -348,10 +343,10 @@ body{
       }
       input {
         position: absolute;
-        top: 15px;
+        top: 13px;
       }
       span {
-        padding-left: 15px;
+        padding-left: 24px;
         &.done {
           color: $color_gray2;
           a {
@@ -364,10 +359,6 @@ body{
           top: -5px;
           &:hover {
             opacity: .8;
-          }
-          img {
-            width: 14px;
-            height: 14px;
           }
         }
         a {
@@ -385,7 +376,7 @@ body{
       top: 3px;
       color: $color_gray2;
       .material-icons {
-        font-size: 17px;
+        font-size: 16px;
         &:hover {
           opacity: .5;
         }
@@ -397,8 +388,8 @@ body{
 /* aside
 ----------------------------------*/
 .aside {
-  width: 25%;
-  margin: 0 2%;
+  width: 32%;
+  margin: 0 1%;
   @include for-size(phone-only) {
     width: 96%;
   }
@@ -406,32 +397,32 @@ body{
 /* timer
 ----------------------------------*/
 .side-box {
-  #timer{
+  #timer {
     text-align: center;
-    margin-top: 5px;
-    padding: 5px 15px 2px;
+    margin-top: 8px;
+    padding: 8px 16px 4px;
     background: #344f62;
     color: $color_gray;
     font-size: 35px;
   }
   .controls{
-    padding: 15px 10px 10px;
+    padding: 16px 8px 8px;
     display: flex;
     justify-content: space-around;
   }
   .videoForm {
-    margin: 5px 0 10px;
+    margin: 8px 0 8px;
     display: flex;
     .addYoutube {
       height: 30px;
       line-height: 30px;
-      margin-left: 5px;
+      margin-left: 8px;
       border: none;
       background: $color-red;
       color: #fff;
       width: auto;
       cursor: pointer;
-      padding: 0px 15px;
+      padding: 0px 16px;
       vertical-align: middle;
       font-size: 14px;
       &:hover {
@@ -461,7 +452,7 @@ body{
 #open {
   button {
     display: block;
-    margin: 15px auto 10px;
+    margin: 16px auto 8px;
     text-align: center;
   }
 }
@@ -469,8 +460,7 @@ body{
 #close {
   button {
     width: 100%;
-    border-radius: 0;
-    margin: 5px 0 0;
+    margin: 8px 0 0;
   }
 }
 
@@ -491,8 +481,7 @@ body{
 #modal {
   background-color: $sub_color2;
   width: 560px;
-  padding: 5px;
-  border-radius: 4px;
+  padding: 8px;
   position: absolute;
   top: 20%;
   right: 0;
@@ -507,7 +496,7 @@ body{
     transform: translate(0, -500px);
   }
   > p {
-    margin: 0 0 20px;
+    margin: 0 0 24px;
   }
   #youtube_box {
     iframe {

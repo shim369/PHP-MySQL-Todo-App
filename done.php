@@ -43,12 +43,12 @@ $dones = $todo->doneAll();
               <h2 class="clearfix">
               <span class="material-icons">list</span><span class="ttl">Done List</span>
               </h2>
-              <a href="./" class="btn">Todo List</a>
+              <a href="./" class="alink btn">Todo List</a>
             </div>
             <ul>
               <?php foreach ($dones as $done) {; ?>
-              <li>
-                <input type="checkbox" data-id="<?= Utils::h($done->id); ?>" <?= $done->is_done ? 'checked' : ''; ?>>
+              <li data-id="<?= Utils::h($done->id); ?>">
+                <input type="checkbox" <?= $done->is_done ? 'checked' : ''; ?>>
                 <span>
                 <?php if ($done->urls) {; ?>
                 <a href="<?= Utils::h($done->urls); ?>" target="_blank"><?= Utils::h($done->title); ?></a>
@@ -56,8 +56,7 @@ $dones = $todo->doneAll();
                 <?= Utils::h($done->title); ?>
                 <?php }; ?>
                 </span>
-            
-                <span data-id="<?= Utils::h($done->id); ?>" class="delete"><span class="material-icons">delete</span></span>
+                <span class="delete"><span class="material-icons">delete</span></span>
               </li>
               <?php }; ?>
             </ul>
