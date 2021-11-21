@@ -22,7 +22,6 @@ $todo = new Todo($pdo);
 $todo->processPost();
 // Todoを表示するために配列を取得するメソッドをgetAll()にする
 $todos = $todo->getAll();
-$dones = $todo->doneAll();
 
 
 ?>
@@ -41,29 +40,26 @@ $dones = $todo->doneAll();
     <div class="container">
     <main class="main" data-token="<?= Utils::h($_SESSION['token']); ?>">
       <section class="add-list common-box">
-          <form autocomplete="off" action="?action=add" method="post">
+          <form autocomplete="off">
             <div class="ttl-box">
               <h2>
               <span class="material-icons">add_circle_outline</span><span class="ttl">Add Todo</span>
               </h2>
                 <input type="submit" class="add btn" value="Add">
-                <input type="hidden" name="token" value="<?= Utils::h($_SESSION['token']); ?>">
             </div>
             <input type="text" name="title" placeholder="Todo Title">
             <input type="url" name="urls" placeholder="Todo URL">
           </form>
       </section>
       <section class="add-list common-box">
-          <form action="?action=purge" method="post">
             <div class="ttl-box">
               <h2>
               <span class="material-icons">list</span><span class="ttl">Todo List</span>
               </h2>
-              <a href="done.php" class="alink btn">Done List</a>
+              <span class="purge add btn">Purge</span>
             </div>
-          </form>
 
-        <ul>
+        <ul id="list-ul">
           <?php foreach ($todos as $todo) {; ?>
           <li data-id="<?= Utils::h($todo->id); ?>">
             <input type="checkbox" <?= $todo->is_done ? 'checked' : ''; ?>>
@@ -74,7 +70,7 @@ $dones = $todo->doneAll();
             <?= Utils::h($todo->title); ?>
             <?php }; ?>
             </span>
-            <span class="delete"><span class="material-icons">delete</span></span>
+            <span class="delete material-icons">delete</span>
           </li>
           <?php }; ?>
         </ul>
@@ -128,15 +124,5 @@ $dones = $todo->doneAll();
   </div>
   </div>
   <?php include('common_footer.php') ?>
-  <script> 
-  function liRemove() {
-  const lis = document.querySelectorAll('li');
-    lis.forEach(li => {
-      if (li.children[0].checked) {
-        li.remove();
-      }
-    });
-  }
-  </script>
 </body>
 </html>

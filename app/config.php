@@ -7,8 +7,7 @@ define('DSN', 'mysql:host=localhost;dbname=todo;charset=utf8mb4');
 define('DB_USER', 'root');
 define('DB_PASS', '');
 // 動作環境をローカルから移す時のためにURLを定数にする
-// define('SITE_URL', 'http://' . $_SERVER['HTTP_HOST']);
-define('SITE_URL', 'http://localhost/todo/');
+define('SITE_URL', 'http://' . $_SERVER['HTTP_HOST']);
 
 
 //自動でファイルを読み込む

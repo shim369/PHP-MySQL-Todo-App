@@ -27,10 +27,14 @@ class todo
       //actionの値によって処理を振り分ける
       switch ($action) {
         case 'add':
-          $this->add();
+          $id = $this->add();
+          header('Content-Type: application/json');
+          echo json_encode(['id' => $id]);
           break;
         case 'toggle':
-          $this->toggle();
+          $isDone = $this->toggle();
+          header('Content-Type: application/json');
+          echo json_encode(['is_done' => $isDone]);
           break;
         case 'delete':
           $this->delete();
@@ -45,8 +49,6 @@ class todo
           exit;
       }
 
-      //二重投稿を防ぐために、リダイレクト処理を追加
-      header('Location: ' . SITE_URL);
       exit;
     }
   }
@@ -69,6 +71,7 @@ class todo
     $stmt->bindValue('urls', $urls, \PDO::PARAM_STR);
     // レコードの追加を実行
     $stmt->execute();
+    return (int) $this->pdo->lastInsertId();
   }
 
   private function toggle() {
@@ -77,10 +80,21 @@ class todo
     if(empty($id)) {
       return;
     }
+
+    $stmt = $this->pdo->prepare("SELECT * FROM todos WHERE id = :id");
+    $stmt->bindValue('id', $id, \PDO::PARAM_INT);
+    $stmt->execute();
+    $todo = $stmt->fetch();
+    if (empty($todo)) {
+      header('HTTP', true, 404); // HTTP Status Code
+      exit;
+    }
   //チェックボッスに変化があると（チェックを入れると）チェックボックスのformでidが送信され、テーブルのis_doneカラムにtrueが入る。formの送信イベントはmain.jsに記載。
     $stmt = $this->pdo->prepare("UPDATE todos SET is_done = NOT is_done WHERE id = :id");
     $stmt->bindValue('id', $id, \PDO::PARAM_INT);
     $stmt->execute();
+
+    return (boolean) !$todo->is_done;
   }
 
   private function delete() {
@@ -103,21 +117,13 @@ class todo
     $this->pdo->query("DELETE FROM todos WHERE is_done = 1");
   }
 
-  //DBにアクセスしデータを取得する関数に定義
-  public function doneAll()
-  {
-    // PDOからdoneとなったレコードを取得
-    $stmt = $this->pdo->query("SELECT * FROM todos WHERE is_done = 1 ORDER BY id DESC");
-    // SQL文の結果が帰ってくる
-    $dones = $stmt->fetchAll();
-    return $dones;
-  }
+
 
   //DBにアクセスしデータを取得する関数に定義
   public function getAll()
   {
     // PDOからまだdoneになっていないレコードを取得
-    $stmt = $this->pdo->query("SELECT * FROM todos WHERE is_done = 0 ORDER BY id DESC");
+    $stmt = $this->pdo->query("SELECT * FROM todos ORDER BY id DESC");
     // SQL文の結果が帰ってくる
     $todos = $stmt->fetchAll();
     return $todos;

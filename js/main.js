@@ -1,56 +1,127 @@
 'use strict';
 {
   const token = document.querySelector('main').dataset.token;
-  //チェックボッスに変化があると（チェックを入れると）チェックボックスのformでidが送信され、テーブルのis_doneカラムにtrueが入る。
-  const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+  const inputTitle = document.querySelector('[name="title"]');
+  const inputUrls = document.querySelector('[name="urls"]');
+  const ul = document.getElementById('list-ul');
 
-  checkboxes.forEach(checkbox => {
-    checkbox.addEventListener('change', () => {
+  
+  inputTitle.focus();
+
+  ul.addEventListener('click', e => {
+    if (e.target.type === 'checkbox') {
       fetch('?action=toggle', {
         method: 'POST',
         body: new URLSearchParams({
-          id: checkbox.parentNode.dataset.id,
+          id: e.target.parentNode.dataset.id,
           token: token,
         }),
-      });
-      liRemove();
-    });
-  });
+      })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('This todo has been deleted!');
+        }
 
-  const deletes = document.querySelectorAll('.delete');
-  deletes.forEach(span => {
-    span.addEventListener('click',() => {
+        return response.json();
+      })
+      .then(json => {
+        if (json.is_done !== e.target.checked) {
+          alert('This Todo has been updated. UI is being updated.');
+          e.target.checked = json.is_done;
+        }
+      })
+      .catch(err => {
+        alert(err.message);
+        location.reload();
+      });
+    }
+    if (e.target.classList.contains('delete')) {
       if (!confirm('Are you sure?')) {
         return;
       }
       fetch('?action=delete', {
         method: 'POST',
         body: new URLSearchParams({
-          id: span.parentNode.dataset.id,
+          id: e.target.parentNode.dataset.id,
           token: token,
         }),
       });
-      span.parentNode.remove();
-    });
+      e.target.parentNode.remove();
+    }
   });
 
-  // const purge = document.querySelector('.purge');
-  // purge.addEventListener('click',() => {
-  //   if (!confirm('Are you sure?')) {
-  //     return;
-  //   }
-  //   fetch('?action=purge', {
-  //     method: 'POST',
-  //     body: new URLSearchParams({
-  //       token: token,
-  //     }),
-  //   });
-  //   const lis = document.querySelectorAll('li');
-  //     lis.forEach(li => {
-  //       if (li.children[0].checked) {
-  //         li.remove();
-  //       }
-  //     });
-  // });
+  function addTodo(id,titleValue,urlsValue) {
+    const li = document.createElement('li');
+    li.dataset.id = id;
+    const checkbox = document.createElement('input');
+    checkbox.type = 'checkbox';
+    const title = document.createElement('span');
+    title.textContent = titleValue;
+    const alink = document.createElement('a');
+    alink.href = urlsValue;
+    alink.setAttribute('target', '_blank');
+    alink.textContent = titleValue;
+    const deleteSpan = document.createElement('span');
+    deleteSpan.textContent = 'delete';
+    deleteSpan.classList.add('delete','material-icons');
+
+    li.appendChild(checkbox);
+    if(urlsValue) {
+      const emptySpan = document.createElement('span');
+      li.appendChild(emptySpan);
+      emptySpan.appendChild(alink);
+    } else {
+      li.appendChild(title);
+    }
+    li.appendChild(deleteSpan);
+
+    
+    ul.insertBefore(li, ul.firstChild);
+
+  }
+
+  document.querySelector('form').addEventListener('submit', e => {
+    e.preventDefault();
+
+    const title = inputTitle.value;
+    const urls = inputUrls.value;
+
+    fetch('?action=add', {
+      method: 'POST',
+      body: new URLSearchParams({
+        title: title,
+        urls: urls,
+        token: token,
+      }),
+    })
+    .then(response => response.json())
+    .then(json => {
+      addTodo(json.id,title,urls);
+    });
+
+    inputTitle.value = '';
+    inputUrls.value = '';
+    inputTitle.focus();
+  });
+
+
+  const purge = document.querySelector('.purge');
+  purge.addEventListener('click',() => {
+    if (!confirm('Are you sure?')) {
+      return;
+    }
+    fetch('?action=purge', {
+      method: 'POST',
+      body: new URLSearchParams({
+        token: token,
+      }),
+    });
+    const lis = document.querySelectorAll('li');
+      lis.forEach(li => {
+        if (li.children[0].checked) {
+          li.remove();
+        }
+      });
+  });
 
 }
