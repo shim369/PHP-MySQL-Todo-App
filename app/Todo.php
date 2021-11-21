@@ -43,7 +43,9 @@ class todo
           $this->purge();
           break;
         case 'addYoutube':
-          $this->addYoutube();
+          $ytId = $this->addYoutube();
+          header('Content-Type: application/json');
+          echo json_encode(['youtubeId' => $ytId]);
           break;
         default:
           exit;
@@ -129,13 +131,30 @@ class todo
     return $todos;
   }
 
-  public function addYoutube()
+  private function addYoutube()
   {
-    define('FILENAME', 'app/youtube.txt');
-    $youtube = trim(filter_input(INPUT_POST, 'youtube'));
-    $fp = fopen(FILENAME, 'a');
-    fwrite($fp, $youtube . "\n");
-    fclose($fp);
+    $youtubeId = trim(filter_input(INPUT_POST, 'youtubeId'));
+    if($youtubeId === '') {
+      return;
+    }
+    $stmt = $this->pdo->prepare("INSERT INTO videos (youtubeId) VALUES (:youtubeId)");
+    $stmt->bindValue('youtubeId', $youtubeId, \PDO::PARAM_STR);
+    $stmt->execute();
+    
+    // define('FILENAME', 'app/youtube.txt');
+    // $youtube = trim(filter_input(INPUT_POST, 'youtube'));
+    // $fp = fopen(FILENAME, 'a');
+    // fwrite($fp, $youtube . "\n");
+    // fclose($fp);
   }
+   //DBにアクセスしデータを取得する関数に定義
+   public function getVideoAll()
+   {
+     // PDOからまだdoneになっていないレコードを取得
+     $stmt = $this->pdo->query("SELECT * FROM videos ORDER BY yid DESC");
+     // SQL文の結果が帰ってくる
+     $videos = $stmt->fetchAll();
+     return $videos;
+   }
 
 }

@@ -1,8 +1,9 @@
 'use strict';
 {
-  const token = document.querySelector('main').dataset.token;
+  const token = document.getElementById('app').dataset.token;
   const inputTitle = document.querySelector('[name="title"]');
   const inputUrls = document.querySelector('[name="urls"]');
+  const inputYoutubeId = document.querySelector('[name="youtubeId"]');
   const ul = document.getElementById('list-ul');
 
   
@@ -80,7 +81,7 @@
 
   }
 
-  document.querySelector('form').addEventListener('submit', e => {
+  document.getElementById('mainForm').addEventListener('submit', e => {
     e.preventDefault();
 
     const title = inputTitle.value;
@@ -124,4 +125,20 @@
       });
   });
 
+
+  document.querySelector('.videoForm').addEventListener('submit', e => {
+    e.preventDefault();
+    const ytId = inputYoutubeId.value;
+
+    fetch('?action=addYoutube', {
+      method: 'POST',
+      body: new URLSearchParams({
+        youtubeId: ytId,
+        token: token,
+      }),
+    });
+    
+    inputYoutubeId.value = '';
+
+  });
 }

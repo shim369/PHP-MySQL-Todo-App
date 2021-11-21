@@ -3,10 +3,10 @@
 require_once(__DIR__ . '/app/config.php');
 require_once(__DIR__ . '/common.php'); 
 
-define('FILENAME', 'app/youtube.txt');
-$videos = file(FILENAME, FILE_IGNORE_NEW_LINES);
-$arrays = array_rand($videos, 1);
-$video = $videos[$arrays];
+// define('FILENAME', 'app/youtube.txt');
+// $videos = file(FILENAME, FILE_IGNORE_NEW_LINES);
+// $arrays = array_rand($videos, 1);
+// $video = $videos[$arrays];
 // Database classが出てきたらMyApp\をつけて呼び出してくれる
 use MyApp\Database;
 
@@ -23,7 +23,8 @@ $todo->processPost();
 // Todoを表示するために配列を取得するメソッドをgetAll()にする
 $todos = $todo->getAll();
 
-
+$videos = $todo->getVideoAll();
+$video = $videos[ array_rand( $videos ) ] ;
 ?>
 
 <!DOCTYPE html>
@@ -35,12 +36,12 @@ $todos = $todo->getAll();
 	<?php include('head.php') ?>
 </head>
 <body>
-  <div id="app">
+  <div id="app" data-token="<?= Utils::h($_SESSION['token']); ?>">
     <?php include('header.php') ?>
     <div class="container">
-    <main class="main" data-token="<?= Utils::h($_SESSION['token']); ?>">
+    <main class="main">
       <section class="add-list common-box">
-          <form autocomplete="off">
+          <form id="mainForm" autocomplete="off">
             <div class="ttl-box">
               <h2>
               <span class="material-icons">add_circle_outline</span><span class="ttl">Add Todo</span>
@@ -99,18 +100,19 @@ $todos = $todo->getAll();
               <span class="material-icons">play_circle_outline</span><span class="ttl">Rest 5min</span>
               </h2>
             </div>
+          <form class="videoForm">
+            <input type="text" placeholder="Video ID" name="youtubeId">
+            <input type="submit" class="addYoutube" value="Add Video">
+          </form>
             
             <div id="open">
               <button class="btn">YouTube</button>
             </div>
-          <!--<form action="?action=addYoutube" method="post" class="videoForm">
-             <input type="text" placeholder="動画ID" name="youtube">
-                <input type="submit" class="addYoutube" value="動画を追加">
-                <input type="hidden" name="token" value="<?/*= Utils::h($_SESSION['token']); */?>"> 
-          </form>-->
           <div id="mask" class="hidden">
             <section id="modal" class="hidden">
-              <div id="youtube_box"></iframe>
+              <div id="youtube_box">
+              <iframe width="100%" height="315" src="https://www.youtube.com/embed/${video}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+              </iframe>
               </div>
               <div id="close">
                 <button class="btn">Close</button>

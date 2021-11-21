@@ -448,7 +448,7 @@ body{
       line-height: 30px;
       margin-left: 8px;
       border: none;
-      background: $color-red;
+      background: $color-brown;
       color: #fff;
       width: auto;
       cursor: pointer;
@@ -465,7 +465,7 @@ body{
         border: none;
         padding: 7px 12px;
         box-sizing: border-box;
-        background: $color_gray3;
+        background: $sub_color1;
         color: $color_gray;
         &::placeholder {
           color: $color_gray2;
