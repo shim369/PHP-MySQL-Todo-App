@@ -41,7 +41,7 @@ body{
     margin-left: auto;
     display: none;
     color: $txt_color2;
-    @include for-size(phone-only) {
+    @include for-size(tablet) {
       display: block;
       position: absolute;
       top: 16px;
@@ -61,7 +61,7 @@ body{
     margin-right: 24px;
     top: 6px;
     display: block;
-    @include for-size(phone-only) {
+    @include for-size(tablet) {
       display: none;
       margin-left: auto;
     }
@@ -69,16 +69,16 @@ body{
       list-style: none;
       display: flex;
       align-items: center;
-      @include for-size(phone-only) {
+      @include for-size(tablet) {
         margin-right: 0px;
       }
       > li {
         font-size: 16px;
         text-align: center;
-        @include for-size(phone-only) {
+        @include for-size(tablet) {
           padding: 0 8px;
         }
-        > a {
+        > a,span {
           padding: 8px 24px;
           display: block;
           color: $txt_color2;
@@ -173,7 +173,10 @@ body{
   }
   > li {
     background: $base_color;
-    a {
+    @include for-size(tablet) {
+      background: transparent;
+    }
+    span,a {
       display: block;
       color: #fff;
       text-align: center;
@@ -188,9 +191,15 @@ body{
       visibility: hidden;
       opacity: 0;
       z-index: 1;
+      @include for-size(tablet) {
+        visibility: visible;
+      }
       li {
-        a {
+        span,a {
           background: $base_color;
+          @include for-size(tablet) {
+            background: transparent;
+          }
           &:hover {
             opacity: .8;
           }
@@ -201,12 +210,24 @@ body{
   li {
     &.menu__single {
       position: relative;
+      .more {
+        @include for-size(tablet) {
+          visibility: hidden;
+        }
+      }
       .menu__second-level {
         position: absolute;
         top: 32px;
         width: 114%;
         -webkit-transition: all .3s;
         transition: all .3s;
+        @include for-size(tablet) {
+          top: -70px;
+          width: auto;
+          position: relative;
+          visibility: visible;
+          opacity: 1;
+        }
       }
       &:hover {
         .menu__second-level {
