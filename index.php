@@ -41,7 +41,7 @@ $dones = $todo->doneAll();
     <div class="container">
     <main class="main" data-token="<?= Utils::h($_SESSION['token']); ?>">
       <section class="add-list common-box">
-          <form action="?action=add" method="post">
+          <form autocomplete="off" action="?action=add" method="post">
             <div class="ttl-box">
               <h2>
               <span class="material-icons">add_circle_outline</span><span class="ttl">Add Todo</span>
