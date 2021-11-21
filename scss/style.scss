@@ -430,7 +430,7 @@ body{
     display: flex;
     justify-content: center;
     button {
-      background: #946258;
+      background: $color-brown;
       margin: 0 2%;
       @include for-size(tablet) {
         padding: 0 8px;
@@ -484,7 +484,7 @@ body{
     display: block;
     margin: 16px auto 8px;
     text-align: center;
-    background: #946258;
+    background: $color-brown;
   }
 }
 
@@ -492,7 +492,7 @@ body{
   button {
     width: 100%;
     margin: 8px 0 0;
-    background: #946258;
+    background: $color-brown;
   }
 }
 
