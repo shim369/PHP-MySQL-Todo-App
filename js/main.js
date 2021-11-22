@@ -126,6 +126,13 @@
   });
 
 
+  // function addYoutube(ytId) {
+  //   const video = ytId;
+  //   const youtube_box = getElementById('youtube_box');
+  //   youtube_box.innerHTML = `<iframe width="100%" height="315" src="https://www.youtube.com/embed/${video}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+
+  // }
+
   document.querySelector('.videoForm').addEventListener('submit', e => {
     e.preventDefault();
     const ytId = inputYoutubeId.value;

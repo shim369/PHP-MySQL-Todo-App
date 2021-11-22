@@ -43,9 +43,7 @@ class todo
           $this->purge();
           break;
         case 'addYoutube':
-          $ytId = $this->addYoutube();
-          header('Content-Type: application/json');
-          echo json_encode(['youtubeId' => $ytId]);
+          $this->addYoutube();
           break;
         default:
           exit;
@@ -147,14 +145,14 @@ class todo
     // fwrite($fp, $youtube . "\n");
     // fclose($fp);
   }
-   //DBにアクセスしデータを取得する関数に定義
    public function getVideoAll()
    {
-     // PDOからまだdoneになっていないレコードを取得
-     $stmt = $this->pdo->query("SELECT * FROM videos ORDER BY yid DESC");
-     // SQL文の結果が帰ってくる
-     $videos = $stmt->fetchAll();
-     return $videos;
+    $stmt = $this->pdo->query("SELECT * FROM videos WHERE youtubeId");
+    //fetchAll()ですべてのyoutubeIdカラムのデータを配列として返す
+    $videos = $stmt->fetchAll();
+    return $videos;
+    // $json_array = json_encode($all);
+    // return $json_array;
    }
 
 }

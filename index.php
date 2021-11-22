@@ -23,8 +23,7 @@ $todo->processPost();
 // Todoを表示するために配列を取得するメソッドをgetAll()にする
 $todos = $todo->getAll();
 
-$videos = $todo->getVideoAll();
-$video = $videos[ array_rand( $videos ) ] ;
+
 ?>
 
 <!DOCTYPE html>
@@ -100,19 +99,17 @@ $video = $videos[ array_rand( $videos ) ] ;
               <span class="material-icons">play_circle_outline</span><span class="ttl">Rest 5min</span>
               </h2>
             </div>
-          <form class="videoForm">
+          <!-- <form class="videoForm" autocomplete="off">
             <input type="text" placeholder="Video ID" name="youtubeId">
             <input type="submit" class="addYoutube" value="Add Video">
-          </form>
+          </form> -->
             
             <div id="open">
               <button class="btn">YouTube</button>
             </div>
-          <div id="mask" class="hidden">
+            <div id="mask" class="hidden">
             <section id="modal" class="hidden">
               <div id="youtube_box">
-              <iframe width="100%" height="315" src="https://www.youtube.com/embed/${video}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-              </iframe>
               </div>
               <div id="close">
                 <button class="btn">Close</button>
