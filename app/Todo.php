@@ -43,7 +43,9 @@ class todo
           $this->purge();
           break;
         case 'addYoutube':
-          $this->addYoutube();
+          $ytId = $this->addYoutube();
+          header('Content-Type: application/json');
+          echo json_encode(['youtubeId' => $ytId]);
           break;
         default:
           exit;
@@ -138,21 +140,16 @@ class todo
     $stmt = $this->pdo->prepare("INSERT INTO videos (youtubeId) VALUES (:youtubeId)");
     $stmt->bindValue('youtubeId', $youtubeId, \PDO::PARAM_STR);
     $stmt->execute();
-    
-    // define('FILENAME', 'app/youtube.txt');
-    // $youtube = trim(filter_input(INPUT_POST, 'youtube'));
-    // $fp = fopen(FILENAME, 'a');
-    // fwrite($fp, $youtube . "\n");
-    // fclose($fp);
   }
-   public function getVideoAll()
-   {
-    $stmt = $this->pdo->query("SELECT * FROM videos WHERE youtubeId");
+
+  public function getVideoAll()
+  {
+    $stmt = $this->pdo->query("SELECT youtubeId FROM videos ORDER BY yid ASC");
     //fetchAll()ですべてのyoutubeIdカラムのデータを配列として返す
-    $videos = $stmt->fetchAll();
-    return $videos;
-    // $json_array = json_encode($all);
-    // return $json_array;
-   }
+    $youtubes = $stmt->fetchAll();
+    $ids = array_column($youtubes, 'youtubeId');
+    $json_array = json_encode($ids,JSON_UNESCAPED_UNICODE);
+    return $json_array;
+  }
 
 }

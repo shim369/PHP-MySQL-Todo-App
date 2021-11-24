@@ -298,7 +298,7 @@ body{
   cursor: pointer;
   color: $txt_color2;
   border: none;
-  background-color: $color-red;
+  background: $color-red;
   margin: 0 1%;
   text-decoration: none;
   font-size: 14px;
@@ -480,22 +480,17 @@ body{
 /* modal
 ----------------------------------*/
 #open {
-  button {
-    display: block;
-    margin: 16px auto 8px;
-    text-align: center;
-    background: $color-brown;
-  }
+  display: block;
+  margin: 16px auto 8px;
+  text-align: center;
 }
-
 #close {
-  button {
-    width: 100%;
-    margin: 8px 0 0;
-    background: $color-brown;
-  }
+  width: 100%;
+  margin: 8px 0 0;
 }
-
+.yt {
+  background: $color-brown;
+}
 #mask {
   background: rgba(0,0,0,.7);
   position: fixed;
@@ -536,5 +531,18 @@ body{
         height: auto;
       }
     }
+  }
+}
+
+/* footer
+----------------------------------*/
+footer {
+  width: 100%;
+  small {
+    text-align: center;
+    font-size: 14px;
+    color: #fff;
+    display: block;
+    padding: 30px 0;
   }
 }
