@@ -108,7 +108,7 @@ $videos = $todo->getVideoAll();
             <div id="mask" class="hidden">
             <section id="modal" class="hidden">
               <div id="youtube_box"></div>
-              <button id="close" class="yt btn">Close</button>
+              <button id="close" class="yt btn brown">Close</button>
             </section>
           </div>
         </div>
