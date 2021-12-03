@@ -298,12 +298,27 @@ body{
   cursor: pointer;
   color: $txt_color2;
   border: none;
-  background: $color-red;
   margin: 0 1%;
   text-decoration: none;
   font-size: 14px;
+  box-sizing: border-box;
+}
+.red {
+  background: $color-red;
+  border: solid 1px $color-red;
   &:hover {
-    opacity: .8;
+    background: $color-white;
+    border: solid 1px $color-red;
+    color: $color-red;
+  }
+}
+.brown {
+  background: $color-brown;
+  border: solid 1px $color-brown;
+  &:hover {
+    background: $color-white;
+    border: solid 1px $color-brown;
+    color: $color-brown;
   }
 }
 
@@ -430,7 +445,6 @@ body{
     display: flex;
     justify-content: center;
     button {
-      background: $color-brown;
       margin: 0 2%;
       @include for-size(tablet) {
         padding: 0 8px;
@@ -444,20 +458,8 @@ body{
     margin: 8px 0 8px;
     display: flex;
     .addYoutube {
-      height: 30px;
-      line-height: 30px;
       margin-left: 8px;
-      border: none;
-      background: $color-brown;
-      color: #fff;
-      width: auto;
-      cursor: pointer;
-      padding: 0px 16px;
-      vertical-align: middle;
-      font-size: 14px;
-      &:hover {
-        opacity: .8;
-      }
+      margin-right: 0;
     }
     input {
       &[type=text]{
@@ -487,9 +489,6 @@ body{
 #close {
   width: 100%;
   margin: 8px 0 0;
-}
-.yt {
-  background: $color-brown;
 }
 #mask {
   background: rgba(0,0,0,.7);

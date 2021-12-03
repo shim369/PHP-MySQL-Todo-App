@@ -46,7 +46,7 @@ $videos = $todo->getVideoAll();
               <h2>
               <span class="material-icons">add_circle_outline</span><span class="ttl">Add Todo</span>
               </h2>
-                <input type="submit" class="add btn" value="Add">
+                <input type="submit" class="add btn red" value="Add">
             </div>
             <input type="text" name="title" placeholder="Todo Title">
             <input type="url" name="urls" placeholder="Todo URL">
@@ -57,7 +57,7 @@ $videos = $todo->getVideoAll();
               <h2>
               <span class="material-icons">list</span><span class="ttl">Todo List</span>
               </h2>
-              <span class="purge add btn">Purge</span>
+              <span class="purge add btn red">Purge</span>
             </div>
 
         <ul id="list-ul">
@@ -87,9 +87,9 @@ $videos = $todo->getVideoAll();
             </div>
           <div id="timer">25:00</div>
           <div class="controls">
-            <button id="start" class="btn">Start</button>
-            <button id="stop" class="btn">Stop</button>
-            <button id="reset" class="btn">Reset</button>
+            <button id="start" class="btn brown">Start</button>
+            <button id="stop" class="btn brown">Stop</button>
+            <button id="reset" class="btn brown">Reset</button>
           </div>
         </div>
 
@@ -101,9 +101,9 @@ $videos = $todo->getVideoAll();
             </div>
           <form class="videoForm" autocomplete="off">
             <input type="text" placeholder="YouTube Video ID" name="youtubeId">
-            <input type="submit" class="addYoutube" value="Add Video">
+            <input type="submit" class="addYoutube btn brown" value="Add">
           </form>
-          <button id="open" class="yt btn">YouTube</button>
+          <button id="open" class="yt btn brown">Rest</button>
 
             <div id="mask" class="hidden">
             <section id="modal" class="hidden">
