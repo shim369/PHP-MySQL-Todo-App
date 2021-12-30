@@ -1,10 +1,21 @@
 <?php
 
 namespace MyApp;
-require_once 'UserLogic.php';
+
+require_once(__DIR__ . '/config.php');
+require_once(__DIR__ . '/UserLogic.php');
 
 $errs = [];
 
+$token = filter_input(INPUT_POST, 'csrf_token');
+//トークンがない、もしくは一致しない場合、処理を中止
+if(!isset($_SESSION['csrf_token']) || $token !== $_SESSION['csrf_token']) {
+  exit('不正なリクエスト');
+}
+//二重送信対策
+unset($_SESSION['csrf_token']);
+
+//validate
 if(!$username = filter_input(INPUT_POST, 'username')) {
   $errs[] = 'ユーザー名を記入してください。';
 }
@@ -25,8 +36,8 @@ if($password !== $password_conf) {
 if(count($errs) === 0) {
   $hasCreated = UserLogic::createUser($_POST);
 
-  if($hasCreated) {
-    $err[] = '登録に失敗しました';
+  if(!$hasCreated) {
+    $errs[] = '登録に失敗しました';
   }
 }
 ?>

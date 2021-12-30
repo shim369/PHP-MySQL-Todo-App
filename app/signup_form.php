@@ -1,3 +1,19 @@
+<?php
+namespace MyApp;
+require_once(__DIR__ . '/config.php');
+require_once(__DIR__ . '/Utils.php');
+require_once(__DIR__ . '/UserLogic.php');
+
+$result = UserLogic::checkLogin();
+if($result) {
+  header('Location: mypage.php');
+  return;
+}
+
+$login_err = isset($_SESSION['login_err']) ? $_SESSION['login_err'] : null;
+unset($_SESSION['login_err']);
+?>
+
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -8,6 +24,9 @@
 </head>
 <body>
   <h2>ユーザー登録フォーム</h2>
+  <?php if(isset($login_err)): ?>
+        <p><?php echo $login_err; ?></p>
+  <?php endif; ?>
   <form action="register.php" method="POST">
     <div>
       <label for="username">ユーザー名：</label>
@@ -26,8 +45,10 @@
       <input type="password" name="password_conf">
     </div>
     <div>
+      <input type="hidden" name="csrf_token" value="<?php echo Utils::h(Utils::setToken()); ?>">
       <input type="submit" value="新規登録">
     </div>
   </form>
+  <a href="login_form.php">ログインする</a>
 </body>
 </html>

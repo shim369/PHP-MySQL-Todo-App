@@ -6,7 +6,7 @@ namespace MyApp;
 class Database
 {
   //getInstance()が呼ばれるたびにDBに接続されると複数の接続ができてしまって無駄なので、PDOクラスから作られるインスタンスは必ず一つになるようにするために、class変数を作る。外部から呼び出すわけではないのでprivateにする。
-  private static $instance;
+  public static $instance;
 
   public static function getInstance() {
     //エラーになったら例外を投げるtry catch
