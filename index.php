@@ -88,6 +88,16 @@ $videos = $todo->getVideoAll();
     </main>
     
     <aside class="aside">
+      <?php if($result): ?>
+        <div class="side-box common-box">
+            <div class="ttl-box">
+              <h2>
+              <span class="material-icons">account_circle</span><span class="ttl">User</span>
+              </h2>
+            </div>
+            <div class="user"><?php echo $login_user['name']; ?></div>
+        </div>
+      <?php endif ?>
         <div class="side-box common-box">
             <div class="ttl-box">
               <h2>

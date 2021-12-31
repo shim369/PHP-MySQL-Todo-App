@@ -2,9 +2,6 @@
   <h1><a href="./">Todo App</a></h1>
   <nav class="pc-menu">
   <ul class="dropdown">
-    <?php if($result): ?>
-      <li><span>User Name : <?php echo $login_user['name']; ?></span></li>
-    <?php endif ?>
     <li><a href="https://github.com/shim369" target="_blank">Github</a></li>
     <li class="menu-single">
       <span class="more">Study</span>

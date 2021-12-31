@@ -299,15 +299,17 @@ body{
   background-color: $base_color;
   align-items: center;
   h2 {
-    font-size: 24px;
+    font-size: 17px;
     color: $color_gray;
     font-style: italic;
     padding: 16px;
     .material-icons {
       font-size: 16px;
+      position: relative;
+      top: 2px;
     }
     .ttl {
-      margin-left: 8px;
+      margin-left: 4px;
     }
   }
   .add, .alink {
@@ -352,7 +354,7 @@ body{
 ----------------------------------*/
 .common-box {
   box-sizing: border-box;
-  background-color: $sub_color2;
+  background: $sub_color2;
   padding: 8px;
   margin: 32px auto 0;
   box-shadow: 0px 3px 3px 3px rgba(44,57,75,.7);
@@ -456,6 +458,15 @@ body{
 /* timer
 ----------------------------------*/
 .side-box {
+  .user {
+    box-sizing: border-box;
+    text-align: center;
+    margin-top: 8px;
+    padding: 8px 16px 4px;
+    background: $sub_color2;
+    color: $color_gray;
+    font-size: 18px;
+  }
   #timer {
     box-sizing: border-box;
     text-align: center;
