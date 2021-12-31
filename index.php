@@ -1,6 +1,8 @@
 <?php
+namespace MyApp;
 // 相対パスでrequireすると、想定しない読み込みエラーが起きることがあるので、__DIR__で絶対パスを示すようにする
 require_once(__DIR__ . '/app/config.php');
+require_once(__DIR__ . '/app/UserLogic.php');
 require_once(__DIR__ . '/common.php'); 
 
 // Database classが出てきたらMyApp\をつけて呼び出してくれる
@@ -9,6 +11,13 @@ use MyApp\Database;
 use MyApp\Todo;
 use MyApp\Utils;
 
+$result = UserLogic::checkLogin();
+
+if(!$result) {
+  header('Location: /todo/app/login_form.php');
+  return;
+}
+$login_user = $_SESSION['login_user'];
 //DBに接続
 $pdo = Database::getInstance();
 

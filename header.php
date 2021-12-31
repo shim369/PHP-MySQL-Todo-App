@@ -1,15 +1,3 @@
-<?php
-
-namespace MyApp;
-
-require_once(__DIR__ . '/app/UserLogic.php');
-require_once(__DIR__ . '/app/Utils.php');
-
-$result = UserLogic::checkLogin();
-
-$login_user = $_SESSION['login_user'];
-?>
-
 <header class="header">
   <h1><a href="./">Todo App</a></h1>
   <nav class="pc-menu">
@@ -27,6 +15,7 @@ $login_user = $_SESSION['login_user'];
         <li><a href="https://prog-8.com/dashboard" target="_blank">Progate</a></li>
       </ul>
     </li>
+    <?php if($result): ?>
     <li>
       <span>
         <form action="app/logout.php" method="POST">
@@ -34,6 +23,7 @@ $login_user = $_SESSION['login_user'];
         </form>
       </span>
     </li>
+    <?php endif ?>
   </ul>
 </nav>
   <div class="sp-menu">
@@ -52,6 +42,7 @@ $login_user = $_SESSION['login_user'];
       <li><a href="https://leetcode.com/" target="_blank">LeetCode</a></li>
       <li><a href="https://jsprimer.net/" target="_blank">JavaScript Primer</a></li>
       <li><a href="https://prog-8.com/dashboard" target="_blank">Progate</a></li>
+    <?php if($result): ?>
       <li>
         <span>
           <form action="app/logout.php" method="POST">
@@ -59,6 +50,7 @@ $login_user = $_SESSION['login_user'];
           </form>
         </span>
       </li>
+    <?php endif ?>
     </ul>
   </nav>
 </div>
