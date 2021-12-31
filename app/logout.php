@@ -2,9 +2,12 @@
 
 namespace MyApp;
 
+require_once(__DIR__ . '/../common.php'); 
 require_once(__DIR__ . '/UserLogic.php');
 
-if(!$logout = filter_input(INPUT_POST, 'logout')) {
+$logout = filter_input(INPUT_POST, 'logout');
+
+if(!$logout) {
   exit('不正なリクエストです。');
 }
 
@@ -21,12 +24,30 @@ UserLogic::logout();
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ログアウト</title>
+  <title>ログアウト | <?php echo $title; ?></title>
+	<?php include('../head.php') ?>
 </head>
 <body>
-    <h2>ログアウト完了</h2>
-    <p>ログアウトしました。</p>
-    <a href="login_form.php">ログイン画面へ</a>
+  <div id="app">
+    <?php include('../header.php') ?>
+    <div class="container">
+    <main class="main">
+      <section class="add-list common-box">
+            <div class="ttl-box">
+              <h2>
+              <span class="ttl">ログアウト完了</span>
+              </h2>
+            </div>
+            <ul id="list-ul">
+              <li>ログアウトしました。</li>
+            </ul>
+      </section>
+    </main>
+    </div>
+        <footer>
+          <small>©2021 Shim</small>
+        </footer>
+    </div>
+	<?php include('../common_footer.php') ?>
 </body>
 </html>

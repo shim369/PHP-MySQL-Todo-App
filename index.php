@@ -12,8 +12,9 @@ use MyApp\Todo;
 use MyApp\Utils;
 
 $result = UserLogic::checkLogin();
+$logout = filter_input(INPUT_POST, 'logout');
 
-if(!$result) {
+if(!$result||$logout) {
   header('Location: /todo/app/login_form.php');
   return;
 }

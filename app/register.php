@@ -2,6 +2,7 @@
 
 namespace MyApp;
 
+require_once(__DIR__ . '/../common.php'); 
 require_once(__DIR__ . '/config.php');
 require_once(__DIR__ . '/UserLogic.php');
 
@@ -40,16 +41,29 @@ if(count($errs) === 0) {
     $errs[] = '登録に失敗しました';
   }
 }
+
+$result = UserLogic::checkLogin();
 ?>
 <!DOCTYPE html>
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ユーザー登録完了画面</title>
+  <title>ユーザー登録完了画面 | <?php echo $title; ?></title>
+	<?php include('../head.php') ?>
 </head>
 <body>
+  <div id="app">
+    <?php include('../header.php') ?>
+    <div class="container">
+    <main class="main">
+      <section class="add-list common-box">
+            <div class="ttl-box">
+              <h2>
+              <span class="material-icons">account_circle</span><span class="ttl">ユーザー登録</span>
+              </h2>
+              <a href="./signup_form.php" class="btn red">Back</a>
+            </div>
   <?php if(count($errs) > 0): ?>
     <?php foreach($errs as $err): ?>
       <p><?php echo $err ?></p>
@@ -57,6 +71,13 @@ if(count($errs) === 0) {
   <?php else: ?>
     <p>ユーザー登録が完了しました。</p>
   <?php endif ?>
-  <a href="./signup_form.php">戻る</a>
+      </section>
+    </main>
+    </div>
+        <footer>
+          <small>©2021 Shim</small>
+        </footer>
+    </div>
+	<?php include('../common_footer.php') ?>
 </body>
 </html>

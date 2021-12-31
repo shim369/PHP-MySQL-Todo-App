@@ -114,6 +114,13 @@ body{
     line-height: 48px !important;
   }
 }
+.login {
+  &:hover {
+    background: $color-white !important;
+    color: $color-red !important;
+    opacity: 1 !important;
+  }
+}
 .overlay{
   position: fixed;
   top: 0;
@@ -363,9 +370,18 @@ body{
 /* add-list
 ----------------------------------*/
 .add-list {
+  p {
+    font-size: 16px;
+    margin: 8px 0;
+  }
   form {
+    label {
+      font-size: 16px;
+      margin-top: 10px;
+      display: block;
+    }
     input {
-      &[type=text],&[type=url] {
+      &[type=text],&[type=url],&[type=email],&[type=password] {
         width: 100%;
         border: none;
         margin: 8px 0 0;
