@@ -57,7 +57,7 @@ $videos = $todo->getVideoAll();
               <h2>
               <span class="material-icons">list</span><span class="ttl">Todo List</span>
               </h2>
-              <span class="purge add btn red">Purge</span>
+              <span class="purge btn red">Purge</span>
             </div>
 
         <ul id="list-ul">

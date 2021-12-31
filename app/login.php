@@ -23,6 +23,10 @@ if(count($errs) > 0) {
 }
 //ログイン成功時の処理
 $result = UserLogic::login($email,$password);
+if($result) {
+  header('Location: /todo/index.php');
+  return;
+}
 //ログイン失敗時の処理
 if(!$result) {
   header('Location: login_form.php');
@@ -40,6 +44,6 @@ if(!$result) {
 <body>
   <h2>ログイン完了</h2>
     <p>ログインしました！</p>
-  <a href="./mypage.php">マイページへ</a>
+  <a href="../index.php">トップページへ</a>
 </body>
 </html>

@@ -14,11 +14,11 @@ body{
 ----------------------------------*/
 .header {
   width: 100%;
-  padding: 24px 0;
+  padding: 16px 0;
   display: flex;
   justify-content: space-between;
   background-color: $base_color;
-  color: #fff;
+  color: $color_gray;
   box-shadow: 0px 3px 3px 3px rgba(44,57,75,.7);
   position: relative;
   @include for-size(phone-only) {
@@ -59,7 +59,6 @@ body{
     position: relative;
     margin-left: auto;
     margin-right: 24px;
-    top: 6px;
     display: block;
     @include for-size(tablet) {
       display: none;
@@ -78,6 +77,20 @@ body{
         @include for-size(tablet) {
           padding: 0 8px;
         }
+        &:first-child {
+          span {
+            &:hover {
+              opacity: 1;
+            }
+          }
+        }
+        &:last-child {
+          span {
+            &:hover {
+              opacity: 1;
+            }
+          }
+        }
         > a,span {
           padding: 8px 24px;
           display: block;
@@ -94,6 +107,13 @@ body{
   }
 }
 
+.logout {
+  font-weight: bold;
+  @include for-size(tablet) {
+    height: 48px !important;
+    line-height: 48px !important;
+  }
+}
 .overlay{
   position: fixed;
   top: 0;
@@ -130,9 +150,15 @@ body{
       &:nth-child(5) {
         transition-delay: .5s;
       }
-      a {
+      &:nth-child(6) {
+        transition-delay: .6s;
+      }
+      &:nth-child(7) {
+        transition-delay: .7s;
+      }
+      a,span,input {
         font-size: 24px;
-        color: $color-white;
+        color: $color_gray;
       }
     }
   }
@@ -187,7 +213,7 @@ body{
       -webkit-transition: all .3s;
       transition: all .3s;
     }
-    .menu__second-level {
+    .menu-second-level {
       visibility: hidden;
       opacity: 0;
       z-index: 1;
@@ -208,16 +234,16 @@ body{
     }
   }
   li {
-    &.menu__single {
+    &.menu-single {
       position: relative;
       .more {
         @include for-size(tablet) {
           visibility: hidden;
         }
       }
-      .menu__second-level {
+      .menu-second-level {
         position: absolute;
-        top: 32px;
+        top: 24px;
         width: 114%;
         -webkit-transition: all .3s;
         transition: all .3s;
@@ -230,8 +256,8 @@ body{
         }
       }
       &:hover {
-        .menu__second-level {
-          top: 50px;
+        .menu-second-level {
+          top: 32px;
           visibility: visible;
           opacity: 1;
         }

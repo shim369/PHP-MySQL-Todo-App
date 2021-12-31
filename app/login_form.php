@@ -4,7 +4,7 @@ require_once(__DIR__ . '/UserLogic.php');
 
 $result = UserLogic::checkLogin();
 if($result) {
-  header('Location: mypage.php');
+  header('Location: /todo/index.php');
   return;
 }
 $err = $_SESSION;
