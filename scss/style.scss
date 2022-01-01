@@ -341,10 +341,11 @@ body{
 .red {
   background: $color-red;
   border: solid 1px $color-red;
+  color: $txt_color2;
   &:hover {
     background: $color-white;
     border: solid 1px $color-red;
-    color: $color-red;
+    color: $color-red !important;
   }
 }
 .brown {
