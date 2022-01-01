@@ -62,7 +62,7 @@ session_destroy();
     </main>
     </div>
         <footer>
-          <small>©2021 Shim</small>
+          <small><?php echo $copyright; ?></small>
         </footer>
     </div>
 </body>

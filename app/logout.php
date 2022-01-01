@@ -45,7 +45,7 @@ UserLogic::logout();
     </main>
     </div>
         <footer>
-          <small>©2021 Shim</small>
+          <small><?php echo $copyright; ?></small>
         </footer>
     </div>
 	<?php include('../common_footer.php') ?>
