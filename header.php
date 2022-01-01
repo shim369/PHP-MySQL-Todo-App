@@ -49,7 +49,7 @@
       </li>
     <?php endif ?>
     <?php if(!$result || $logout): ?>
-    <li><a href="/todo/app/login_form.php" class="login btn red">Login</a></li>
+    <li><a href="/todo/app/login_form.php" class="login red">Login</a></li>
     <?php endif ?>
     </ul>
   </nav>
