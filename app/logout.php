@@ -44,9 +44,6 @@ UserLogic::logout();
       </section>
     </main>
     </div>
-        <footer>
-          <small><?php echo $copyright; ?></small>
-        </footer>
     </div>
 	<?php include('../common_footer.php') ?>
 </body>

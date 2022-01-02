@@ -134,9 +134,6 @@ $videos = $todo->getVideoAll();
         </div>
       </aside>
   </div>
-      <footer>
-        <small><?php echo $copyright; ?></small>
-      </footer>
   </div>
 	<?php include('common_footer.php') ?>
 </body>

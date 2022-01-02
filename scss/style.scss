@@ -85,6 +85,7 @@ body{
           }
         }
         &:last-child {
+          margin-left: 24px;
           span {
             &:hover {
               opacity: 1;
@@ -584,18 +585,5 @@ body{
         height: auto;
       }
     }
-  }
-}
-
-/* footer
-----------------------------------*/
-footer {
-  width: 100%;
-  small {
-    text-align: center;
-    font-size: 14px;
-    color: #fff;
-    display: block;
-    padding: 30px 0;
   }
 }

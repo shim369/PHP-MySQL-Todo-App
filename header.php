@@ -14,11 +14,9 @@
     </li>
     <?php if($result && !$logout): ?>
     <li>
-      <span>
         <form action="/todo/app/logout.php" method="POST">
           <input class="logout btn red" type="submit" name="logout" value="Logout">
         </form>
-      </span>
     </li>
     <?php endif ?>
     <?php if(!$result || $logout): ?>

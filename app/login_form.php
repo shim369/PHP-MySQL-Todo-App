@@ -61,9 +61,6 @@ session_destroy();
       </section>
     </main>
     </div>
-        <footer>
-          <small><?php echo $copyright; ?></small>
-        </footer>
     </div>
 </body>
 </html>
