@@ -15,7 +15,7 @@
     <?php if($result && !$logout): ?>
     <li>
         <form action="/todo/app/logout.php" method="POST">
-          <input class="logout btn red" type="submit" name="logout" value="Logout">
+          <input class="logout red" type="submit" name="logout" value="Logout">
         </form>
     </li>
     <?php endif ?>
@@ -41,7 +41,7 @@
       <li>
         <span>
           <form action="/todo/app/logout.php" method="POST">
-            <input class="logout btn red" type="submit" name="logout" value="Logout">
+            <input class="logout red" type="submit" name="logout" value="Logout">
           </form>
         </span>
       </li>

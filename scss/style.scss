@@ -109,13 +109,29 @@ body{
 }
 
 .logout {
+  padding: 8px 24px;
+  display: block;
+  color: #fff;
+  text-decoration: none;
   font-weight: bold;
+  box-sizing: border-box;
+  font-size: 16px;
+  cursor: pointer;
   @include for-size(tablet) {
     height: 48px !important;
     line-height: 48px !important;
+    padding: 0px 24px;
+    display: inline-block;
+    font-weight: normal;
   }
 }
 .login {
+  @include for-size(tablet) {
+    height: 48px !important;
+    line-height: 48px !important;
+    padding: 8px 24px;
+    text-decoration: none;
+  }
   &:hover {
     background: $color-white !important;
     color: $color-red !important;
@@ -165,7 +181,7 @@ body{
         transition-delay: .7s;
       }
       a,span,input {
-        font-size: 24px;
+        font-size: 16px;
         color: $color_gray;
       }
     }
