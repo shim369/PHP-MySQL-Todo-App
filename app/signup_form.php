@@ -54,9 +54,9 @@ unset($_SESSION['login_err']);
                 <label for="password_conf">パスワード確認</label>
                 <input type="password" name="password_conf">
               </div>
-              <div>
+              <div class="t-m20">
                 <input type="hidden" name="csrf_token" value="<?php echo Utils::h(Utils::setToken()); ?>">
-                <p class="tcenter t-m10"><input class="btn red" type="submit" value="Sign up"></p>
+                <p class="tcenter"><input class="btn red" type="submit" value="Sign up"></p>
               </div>
             </form>
       </section>

@@ -54,8 +54,8 @@ session_destroy();
                   <p><?php echo $err['password']; ?></p>
                 <?php endif; ?>
               </div>
-              <div>
-                <p class="tcenter t-m10"><input type="submit" value="Login" class="btn red"></p>
+              <div class="t-m20">
+                <p class="tcenter"><input type="submit" value="Login" class="btn red"></p>
               </div>
             </form>
       </section>
