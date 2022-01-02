@@ -35,7 +35,6 @@ session_destroy();
               </h2>
               <a href="signup_form.php" class="btn red">Sign Up</a>
             </div>
-            <?php include('../common_footer.php') ?>
             <?php if(isset($err['msg'])): ?>
               <p><?php echo $err['msg']; ?></p>
             <?php endif; ?>
@@ -61,6 +60,7 @@ session_destroy();
       </section>
     </main>
     </div>
-    </div>
+</div>
+<?php include('../common_footer.php') ?>
 </body>
 </html>
