@@ -308,7 +308,7 @@ body{
 ----------------------------------*/
 .main {
   width: 64%;
-  flex: 1;
+  // flex: 1;
   margin: 0 1%;
   @include for-size(phone-only) {
     width: 98%;
