@@ -39,7 +39,7 @@ $videos = $todo->getVideoAll();
 	<?php include('head.php') ?>
   <script>
     function selectYoutube() {
-      var videos = JSON.parse('<?php echo $videos; ?>');
+      let videos = JSON.parse('<?php echo $videos; ?>');
       let video = videos[Math.floor(Math.random() * videos.length)];
       youtube_box.innerHTML = `<iframe width="100%" height="315" src="https://www.youtube.com/embed/${video}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
     }
@@ -134,7 +134,7 @@ $videos = $todo->getVideoAll();
         </div>
       </aside>
   </div>
-  </div>
-	<?php include('common_footer.php') ?>
+</div>
+<?php include('common_footer.php') ?>
 </body>
 </html>
