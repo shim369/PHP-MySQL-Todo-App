@@ -31,7 +31,7 @@ session_destroy();
       <section class="add-list common-box">
             <div class="ttl-box">
               <h2>
-              <span class="ttl">ログインフォーム</span>
+              <span class="material-icons">login</span><span class="ttl">Login Form</span>
               </h2>
               <a href="signup_form.php" class="btn red">Sign Up</a>
             </div>

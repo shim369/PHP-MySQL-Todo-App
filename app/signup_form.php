@@ -34,7 +34,7 @@ unset($_SESSION['login_err']);
       <section class="add-list common-box">
             <div class="ttl-box">
               <h2>
-              <span class="material-icons">account_circle</span><span class="ttl">ユーザー登録</span>
+              <span class="material-icons">account_circle</span><span class="ttl">Signup Form</span>
               </h2>
             </div>
             <?php if(isset($login_err)): ?>

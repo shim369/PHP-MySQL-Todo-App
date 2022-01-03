@@ -35,7 +35,7 @@ UserLogic::logout();
       <section class="add-list common-box">
             <div class="ttl-box">
               <h2>
-              <span class="ttl">ログアウト完了</span>
+              <span class="material-icons">logout</span><span class="ttl">Logout</span>
               </h2>
             </div>
             <ul id="list-ul">
