@@ -3,8 +3,11 @@ namespace MyApp;
 require_once(__DIR__ . '/../common.php'); 
 require_once(__DIR__ . '/config.php');
 require_once(__DIR__ . '/Utils.php');
+require_once(__DIR__ . '/Token.php');
 require_once(__DIR__ . '/UserLogic.php');
 
+
+Token::create();
 $result = UserLogic::checkLogin();
 if($result) {
   header('Location: /todo/index.php');
@@ -55,7 +58,7 @@ unset($_SESSION['login_err']);
                 <input type="password" name="password_conf">
               </div>
               <div class="t-m20">
-                <input type="hidden" name="csrf_token" value="<?php echo Utils::h(Utils::setToken()); ?>">
+                <input type="hidden" name="token" value="<?php echo Utils::h($_SESSION['token']); ?>">
                 <p class="tcenter"><input class="btn red" type="submit" value="Sign up"></p>
               </div>
             </form>

@@ -5,16 +5,18 @@ namespace MyApp;
 require_once(__DIR__ . '/../common.php'); 
 require_once(__DIR__ . '/config.php');
 require_once(__DIR__ . '/UserLogic.php');
+require_once(__DIR__ . '/Token.php');
 
 $errs = [];
 
-$token = filter_input(INPUT_POST, 'csrf_token');
+$token = filter_input(INPUT_POST, 'token');
 //トークンがない、もしくは一致しない場合、処理を中止
-if(!isset($_SESSION['csrf_token']) || $token !== $_SESSION['csrf_token']) {
-  exit('不正なリクエスト');
-}
+Token::validate();
+// if(!isset($_SESSION['token']) || $token !== $_SESSION['token']) {
+//   exit('不正なリクエスト');
+// }
 //二重送信対策
-unset($_SESSION['csrf_token']);
+unset($_SESSION['token']);
 
 //validate
 if(!$username = filter_input(INPUT_POST, 'username')) {
