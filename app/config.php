@@ -4,7 +4,6 @@ session_start();
 
 //PDOを使ってDBへアクセスするための定数定義
 define('DSN', 'mysql:host=localhost;dbname=todo;charset=utf8mb4');
-define('DB_HOST', 'localhost');
 define('DB_NAME', 'todo');
 define('DB_USER', 'root');
 define('DB_PASS', '');
